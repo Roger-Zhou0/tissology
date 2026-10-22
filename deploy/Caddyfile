@@ -1,0 +1,4 @@
+{$TISSUE_HOSTNAME} {
+    encode zstd gzip
+    reverse_proxy studio:7860
+}

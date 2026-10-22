@@ -1,0 +1,27 @@
+# Append to compose.yaml (and compose.cpu.yaml when models are installed).
+services:
+  proxy:
+    image: caddy:2.11.7-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      TISSUE_HOSTNAME: ${TISSUE_HOSTNAME:?Set the public hostname that resolves to this server}
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - proxy-data:/data
+      - proxy-config:/config
+    restart: unless-stopped
+    depends_on:
+      studio:
+        condition: service_healthy
+    logging:
+      driver: local
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  proxy-data:
+  proxy-config:
