@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tissology"
+version = "0.1.0"
+description = "Finite-collection pathology studies with traceable probability audits"
+requires-python = ">=3.11"
+dependencies = ["numpy>=2.2", "scipy>=1.16", "Pillow>=11", "fastapi>=0.116", "uvicorn>=0.35"]
+
+[project.optional-dependencies]
+inference = ["torch>=2.6", "transformers==4.56.1", "huggingface-hub>=0.34"]
+training = ["scikit-learn==1.7.2"]
+
+[tool.setuptools.packages.find]
+include = ["studio*"]
+
+[tool.setuptools.package-data]
+studio = ["static/*.html", "static/*.css", "static/*.js", "static/*.svg", "static/*.json", "static/**/*.html", "static/**/*.css", "static/**/*.js", "static/**/*.svg"]

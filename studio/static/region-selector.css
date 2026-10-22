@@ -1,0 +1,29 @@
+/* Optional source-image crop controls, shared by both image inspectors. */
+.region-selector{margin:14px 0;min-width:0}.region-selector [hidden]{display:none!important}
+.region-selector button,.region-selector input,.region-selector select{font:inherit;font-size:13px;min-height:40px;border:1px solid var(--control-line);border-radius:6px;background:var(--panel);color:var(--ink);padding:8px 11px}
+.region-selector button.primary{background:var(--blue);border-color:var(--blue);color:#fff}.region-selector button:disabled{opacity:.5;cursor:not-allowed}
+.region-selector .region-toggle{background:transparent;color:var(--blue)}
+.region-editor{margin-top:12px;padding:14px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+.region-editor p{font-size:12px;line-height:1.55;color:var(--muted);margin:0 0 10px}
+.region-view-tools{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}.region-view-tools label{display:flex!important;align-items:center;gap:8px;margin:0!important;font-size:12px}.region-view-tools select{margin:0!important;width:auto!important}
+.region-viewport{overflow:auto;max-height:430px;max-height:min(430px,48vh);background:var(--image-surface);border:1px solid var(--control-line);border-radius:5px}
+.region-stage{position:relative;width:100%;margin:0 auto;line-height:0;cursor:crosshair;touch-action:none;user-select:none;isolation:isolate}
+.region-selector .region-stage>img{display:block!important;width:100%!important;height:auto!important;max-height:none!important;max-width:none!important;aspect-ratio:auto!important;object-fit:fill!important;border-radius:0!important;pointer-events:none}
+.region-rectangle{position:absolute;box-sizing:border-box;pointer-events:none;border:2px solid #fff;outline:2px solid #8a503c;background:#b96f4224;box-shadow:0 0 0 9999px #15201b3b}
+.region-bounds{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:14px}.region-bounds label{display:block!important;min-width:0;font-size:12px;margin:0!important}.region-bounds input{display:block!important;width:100%!important;max-width:100%;margin:5px 0 0!important;padding:8px!important}
+.region-editor .region-dimensions{font-size:11px;margin:8px 0}.region-editor .region-status{color:var(--ink);margin:10px 0;overflow-wrap:anywhere}.region-status[role=alert]{color:#8a503c}
+.region-actions{display:flex;gap:8px;flex-wrap:wrap}.region-editor .region-scope{font-size:11px;margin:10px 0 0}
+.region-evidence-label{display:block;font-size:10px;line-height:1.4;margin-top:4px;color:var(--muted);overflow-wrap:anywhere}
+.region-query-context{margin-top:8px;font-size:12px}.region-query-context img{width:100px;height:auto;max-height:100px;object-fit:contain;display:block;margin:8px 0;border:1px solid var(--line)}
+@media(max-width:600px){.region-editor{padding:10px}.region-bounds{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.region-selector button,.region-selector input,.region-selector select{min-height:44px;font-size:12px}.region-actions{display:grid;grid-template-columns:1fr}.region-view-tools{align-items:flex-end;gap:6px}.region-view-tools label{font-size:11px;gap:5px}.region-view-tools button{font-size:11px;padding:6px 8px}.region-viewport{max-height:330px}}
+.region-evidence img{object-fit:contain!important;background:var(--image-surface)}
+
+/* A selected crop has its own actions; whole-image actions return on close. */
+#semantic-image-dialog:has(#semantic-region-tools .region-editor:not([hidden])) .semantic-image-actions,
+#semantic-image-dialog:has(#semantic-region-tools .region-editor:not([hidden])) #semantic-image-similar,
+.image-detail-view:has(.region-editor:not([hidden]))>[data-image-similar],
+.image-detail-view:has(.region-editor:not([hidden]))>[data-image-finding]{display:none!important}
+#semantic-image-dialog .region-selector button.primary,
+#image-dialog .region-selector button.primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+#semantic-image-dialog .region-selector button.primary:hover:not(:disabled),
+#image-dialog .region-selector button.primary:hover:not(:disabled){background:var(--accent-hover);border-color:var(--accent-hover)}

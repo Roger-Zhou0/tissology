@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Lab workspace · Tissology</title>
+  <link rel="stylesheet" href="static/style.css?v=15">
+  <link rel="stylesheet" href="static/presentation.css?v=10">
+  <link rel="stylesheet" href="static/lab.css?v=1">
+</head>
+<body class="lab-page">
+<header class="app-header"><div class="header-inner"><a class="brand" href="workspace">Tissology</a></div></header>
+<main id="main-content" class="lab-main">
+  <div class="lab-heading"><p class="eyebrow">Shared lab workspace</p><h1 id="lab-title">Connecting to your lab…</h1><p id="lab-intro" class="intro">Collections, searches, findings and studies in one shared workspace.</p></div>
+  <div id="lab-error" class="lab-error" role="alert" tabindex="-1" hidden></div>
+  <p id="lab-status" class="lab-status" role="status" aria-live="polite">Checking your session…</p>
+  <button id="lab-retry" type="button" hidden>Try again</button>
+
+  <section id="lab-login" class="lab-auth panel" aria-labelledby="lab-title" hidden>
+    <form id="lab-login-form">
+      <label for="login-email">Email<input id="login-email" name="email" type="email" autocomplete="username" maxlength="254" required></label>
+      <label for="login-password">Password<input id="login-password" name="password" type="password" autocomplete="current-password" maxlength="256" required></label>
+      <button class="primary" type="submit">Sign in</button>
+    </form>
+    <p class="lab-form-note">New to this lab? Open the invitation link your lab owner shared with you.</p>
+    <p class="lab-form-note">For password help, contact the person running this workspace.</p>
+  </section>
+
+  <section id="lab-setup" class="lab-auth panel" aria-labelledby="lab-title" hidden>
+    <p class="lab-form-intro">Create the owner account. You can then invite your collaborators.</p>
+    <form id="lab-setup-form">
+      <label for="setup-code">Setup code<input id="setup-code" name="code" type="password" autocomplete="off" maxlength="200" aria-describedby="setup-code-help" required></label>
+      <p id="setup-code-help" class="lab-input-help">The person running this server has the private setup code.</p>
+      <label for="setup-workspace">Lab name<input id="setup-workspace" name="workspace_name" type="text" autocomplete="organization" maxlength="120" placeholder="Your research lab" required></label>
+      <label for="setup-name">Your name<input id="setup-name" name="name" type="text" autocomplete="name" maxlength="120" required></label>
+      <label for="setup-email">Email<input id="setup-email" name="email" type="email" autocomplete="username" maxlength="254" required></label>
+      <label for="setup-password">Password<input id="setup-password" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="256" aria-describedby="setup-password-help" required></label>
+      <p id="setup-password-help" class="lab-input-help">Use at least 12 characters.</p>
+      <button class="primary" type="submit">Create lab workspace</button>
+    </form>
+    <p class="lab-form-note">All lab members can view and edit the shared work. The owner manages invitations and access.</p>
+  </section>
+
+  <section id="lab-join" class="lab-auth panel" aria-labelledby="lab-title" hidden>
+    <p id="lab-join-note" class="lab-form-intro">Create your account using the email address on your invitation.</p>
+    <form id="lab-join-form">
+      <label for="join-name">Your name<input id="join-name" name="name" type="text" autocomplete="name" maxlength="120" required></label>
+      <label for="join-email">Invited email<input id="join-email" name="email" type="email" autocomplete="username" maxlength="254" required></label>
+      <label for="join-password">Password<input id="join-password" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="256" aria-describedby="join-password-help" required></label>
+      <p id="join-password-help" class="lab-input-help">Use at least 12 characters.</p>
+      <button class="primary" type="submit">Join lab workspace</button>
+    </form>
+    <p class="lab-form-note">Your lab’s collections and saved work will be shared with you.</p>
+    <a id="lab-signin-link" class="lab-inline-link" href="lab?view=login">Already have an account? Sign in</a>
+  </section>
+
+  <section id="lab-team" hidden>
+    <div class="lab-current-account panel"><div><p id="lab-current-name"></p><p id="lab-current-email"></p></div><button id="lab-logout" type="button">Sign out</button></div>
+    <div class="lab-workspace-link"><a id="lab-open-workspace" class="primary" href="workspace">Open workspace <span aria-hidden="true">→</span></a></div>
+    <section class="lab-team-section" aria-labelledby="lab-members-title">
+      <div class="lab-section-heading"><h2 id="lab-members-title">Lab members</h2><button id="lab-refresh" type="button">Refresh</button></div>
+      <p id="lab-members-status" class="lab-status" role="status">Loading members…</p>
+      <ul id="lab-members" class="lab-list"></ul>
+    </section>
+    <section id="lab-owner-tools" class="lab-team-section panel" aria-labelledby="lab-invite-title" hidden>
+      <h2 id="lab-invite-title">Invite a collaborator</h2>
+      <p class="lab-form-intro">Create an invitation link, then share it directly with your collaborator.</p>
+      <form id="lab-invite-form" class="lab-invite-form"><label for="invite-email">Their email<input id="invite-email" name="email" type="email" autocomplete="off" maxlength="254" required></label><button class="primary" type="submit">Create invitation</button></form>
+      <div id="lab-invite-created" class="lab-invite-created" hidden>
+        <label for="lab-invite-url">Invitation link<textarea id="lab-invite-url" rows="3" readonly spellcheck="false"></textarea></label>
+        <div class="lab-invite-copy"><button id="lab-copy-invite" type="button">Copy link</button><p id="lab-invite-copy-status" role="status" aria-live="polite"></p></div>
+        <p id="lab-invite-created-note" class="lab-input-help"></p>
+      </div>
+      <div class="lab-pending-invites"><h3>Pending invitations</h3><p id="lab-invitations-status" class="lab-status" role="status"></p><ul id="lab-invitations" class="lab-list"></ul></div>
+    </section>
+    <details class="lab-activity lab-team-section"><summary>Recent account activity</summary><p class="lab-form-note">This records actions by signed-in accounts. Reviewer names in existing scientific records remain as originally entered.</p><p id="lab-activity-status" class="lab-status" role="status"></p><ul id="lab-activity-items" class="lab-activity-list"></ul></details>
+    <p class="lab-footer-note">For password help, contact the person running this workspace.</p>
+  </section>
+  <noscript><p>Enable JavaScript to sign in and use this workspace.</p></noscript>
+</main>
+<dialog id="lab-confirm" aria-labelledby="lab-confirm-title" aria-describedby="lab-confirm-detail"><h2 id="lab-confirm-title"></h2><p id="lab-confirm-detail"></p><div class="lab-confirm-actions"><button id="lab-confirm-cancel" type="button" autofocus>Cancel</button><button id="lab-confirm-action" type="button">Remove access</button></div></dialog>
+<script src="static/lab-session.js?v=2"></script><script src="static/lab.js?v=1"></script><script src="static/navigation.js?v=13"></script>
+</body>
+</html>

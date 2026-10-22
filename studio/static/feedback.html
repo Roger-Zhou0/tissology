@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Expert feedback · Tissology</title><link rel="stylesheet" href="static/style.css?v=15"><link rel="stylesheet" href="static/feedback.css?v=2"></head>
+<body><header class="app-header"><div class="header-inner"><a class="brand" href="./">Tissology</a><a href="classification">CRC study</a><a href="semantic">Describe &amp; search</a><a href="research">Breast area study</a></div></header>
+<main class="feedback-main"><h1>Correct a tile. Test a new classifier.</h1>
+<p class="intro">CRC development workspace · Frozen CONCH features · Whole-tile tissue classes</p>
+<p id="simulation-banner" class="scope-note" hidden>This workspace includes simulated feedback using supplied dataset labels. It does not demonstrate expert review or expert time savings.</p>
+<p>Flag a prediction for review, approve a tissue label, then train a separate candidate. Similarity suggests examples to inspect; it never copies your label to them.</p>
+<div id="feedback-error" role="alert" hidden></div><div id="feedback-message" role="status" aria-live="polite"></div>
+<section class="panel"><h2>1. Inspect development examples</h2>
+<p>These are training-role images with supplied dataset labels. The current classifier already saw them; disagreements are review prompts, not measured test errors.</p>
+<label>Reviewer / source <input id="reviewer" maxlength="100" placeholder="Your name or review team" autocomplete="name"></label>
+<div class="actions"><label><input type="checkbox" id="disagreements" checked> Show prediction / dataset disagreements</label><button id="refresh-examples">Refresh examples</button></div>
+<p id="example-count"></p><div id="examples" class="feedback-grid"></div><div class="actions"><button id="previous">Previous</button><button id="next">Next</button></div>
+</section>
+<section class="panel" id="review-panel" hidden><h2>2. Review this tile</h2><div id="selected"></div>
+<form id="flag-form"><label>What looks wrong? <textarea id="flag-note" required maxlength="2000"></textarea></label><button type="submit">Flag for review</button></form>
+<div id="decision-panel" hidden><p id="flag-state"></p><form id="decision-form">
+<label>Review outcome <select id="disposition"><option value="approved">Approve a whole-tile label</option><option value="uncertain">Uncertain / disputed — no training label</option><option value="dismissed">Dismiss / retract correction</option></select></label>
+<label>Corrected tissue class <select id="correction-label" required><option value="">Choose a tissue class</option></select></label>
+<label>Annotation source <select id="correction-source"><option value="manual_review">Manual reviewer judgment</option><option value="dataset_simulation">Simulated review using dataset label</option></select></label>
+<label>Correction evidence / rationale <textarea id="decision-note" required maxlength="2000"></textarea></label><button type="submit">Save review decision</button></form></div>
+<h3>Similar development tiles</h3><p>CONCH pooled-feature cosine similarity; no physical adjacency or shared label is implied. Each tile needs its own review.</p><div id="neighbors" class="feedback-grid"></div></section>
+<section class="panel"><h2>Recorded review history</h2><p>Flags alone are not labels. The latest review decision for a tile controls future training; existing candidate snapshots stay frozen.</p><div id="history"></div></section>
+<section class="panel"><h2>3. Train and evaluate a version</h2>
+<p>Train a separate classifier from approved corrections and existing development examples. Review its validation results for improvements and regressions.</p>
+<details><summary>Training and evaluation details</summary><p>Fit a small C=10 logistic classifier on the 4,500 original training examples, replacing approved labels and giving those examples weight 5. Keep all other examples at weight 1. The encoder stays frozen.</p>
+<p>Each candidate is compared with a new train-only control on the reused 900-image development validation set. The deployed classifier was fitted on all 5,400 development labels and is not that control. These results support development decisions, not fresh generalization.</p></details>
+<div class="actions"><button id="train" disabled>Queue candidate training</button><button id="refresh-status">Refresh job status</button></div><p id="correction-count"></p><div id="candidates"></div></section>
+<section class="panel"><h2>4. Eligibility for a new study</h2><p id="promotion-block"></p><p>A configured fresh test compares the frozen candidate with the deployed model on unused images. Only candidates that pass the frozen checks can open a separate new study. Existing studies, predictions and audit intervals stay bound to their original models.</p><h3>Breast area models are a separate task</h3><p id="spatial-block"></p></section>
+</main><script src="static/lab-session.js?v=2"></script><script src="static/feedback.js?v=1"></script><script src="static/navigation.js?v=13"></script></body></html>

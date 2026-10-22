@@ -1,0 +1,41 @@
+name: Tissology container
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  container:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build CPU workspace
+        run: docker build --target workspace -t tissology:test .
+      - name: Check startup and read-only protection
+        shell: bash
+        run: |
+          docker run --detach --name tissology-test -p 127.0.0.1:7860:7860 \
+            -e TISSUE_PUBLIC_READONLY=1 tissology:test
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:7860/healthz; then
+              curl --fail --silent http://127.0.0.1:7860/ > /tmp/tissology.html
+              grep -q Tissology /tmp/tissology.html
+              status=$(curl --silent --output /dev/null --write-out '%{http_code}' \
+                --request POST http://127.0.0.1:7860/api/collections)
+              test "$status" = 403
+              exit 0
+            fi
+            sleep 2
+          done
+          docker logs tissology-test
+          exit 1
+      - name: Container logs
+        if: failure()
+        run: docker logs tissology-test || true
+      - name: Remove test container
+        if: always()
+        run: docker rm --force tissology-test || true

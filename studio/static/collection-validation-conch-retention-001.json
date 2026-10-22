@@ -1,0 +1,583 @@
+{
+  "schema": "collection-scanner-validation-v2",
+  "available": true,
+  "dataset": "CRC-VAL-HE-7K",
+  "image_count": 7180,
+  "label_agreement": 0.9616991643454039,
+  "balanced_accuracy": 0.9536451622326,
+  "macro_f1": 0.9462048580483918,
+  "weakest_class": {
+    "code": "MUS",
+    "name": "Smooth muscle",
+    "recall": 0.7618243243243243
+  },
+  "scope_note": "Agreement with supplied labels for nine colorectal H&E tissue classes. This is a reused benchmark result for the updated classifier; it is not a fresh patient-level validation.",
+  "model_name": "CONCH + retention-trained colorectal tissue classifier",
+  "release_id": "conch-retention-001",
+  "classifier_sha256": "1593966cc99c8b99317ba1492c92116694cc876fcaa01cb9c1eb3da263a5b8ea",
+  "coefficients_sha256": "73b9a068c8bb6fc516cd3077eb166f119fd4420ed42ca568ae62d00c155feb86",
+  "report_url": "static/collection-validation-conch-retention-001.json",
+  "known_benchmark_reproduction": {
+    "correct": 6905,
+    "total": 7180,
+    "accuracy": 0.9616991643454039,
+    "balanced_accuracy": 0.9536451622326,
+    "macro_f1": 0.9462048580483918,
+    "per_class": [
+      {
+        "label": "ADI",
+        "support": 1338,
+        "correct": 1337,
+        "precision": 0.9940520446096655,
+        "recall": 0.9992526158445441,
+        "f1": 0.9966455460305629
+      },
+      {
+        "label": "BACK",
+        "support": 847,
+        "correct": 847,
+        "precision": 0.9988207547169812,
+        "recall": 1.0,
+        "f1": 0.9994100294985251
+      },
+      {
+        "label": "DEB",
+        "support": 339,
+        "correct": 338,
+        "precision": 0.9159891598915989,
+        "recall": 0.9970501474926253,
+        "f1": 0.9548022598870056
+      },
+      {
+        "label": "LYM",
+        "support": 634,
+        "correct": 631,
+        "precision": 0.9813374805598756,
+        "recall": 0.9952681388012619,
+        "f1": 0.9882537196554425
+      },
+      {
+        "label": "MUC",
+        "support": 1035,
+        "correct": 1027,
+        "precision": 0.9961202715809894,
+        "recall": 0.9922705314009662,
+        "f1": 0.9941916747337851
+      },
+      {
+        "label": "MUS",
+        "support": 592,
+        "correct": 451,
+        "precision": 0.9356846473029046,
+        "recall": 0.7618243243243243,
+        "f1": 0.839851024208566
+      },
+      {
+        "label": "NORM",
+        "support": 741,
+        "correct": 737,
+        "precision": 0.9509677419354838,
+        "recall": 0.9946018893387314,
+        "f1": 0.9722955145118733
+      },
+      {
+        "label": "STR",
+        "support": 421,
+        "correct": 381,
+        "precision": 0.7243346007604563,
+        "recall": 0.9049881235154394,
+        "f1": 0.8046462513199577
+      },
+      {
+        "label": "TUM",
+        "support": 1233,
+        "correct": 1156,
+        "precision": 0.9956933677863911,
+        "recall": 0.9375506893755069,
+        "f1": 0.9657477025898078
+      }
+    ],
+    "labels": [
+      "ADI",
+      "BACK",
+      "DEB",
+      "LYM",
+      "MUC",
+      "MUS",
+      "NORM",
+      "STR",
+      "TUM"
+    ],
+    "confusion_matrix": [
+      [
+        1337,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        847,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        338,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        631,
+        0,
+        0,
+        0,
+        3,
+        0
+      ],
+      [
+        6,
+        0,
+        1,
+        0,
+        1027,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        451,
+        0,
+        141,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        737,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        6,
+        0,
+        2,
+        29,
+        0,
+        381,
+        3
+      ],
+      [
+        2,
+        0,
+        24,
+        11,
+        1,
+        1,
+        38,
+        0,
+        1156
+      ]
+    ]
+  },
+  "evaluation_report_file_sha256": "144995ad0e2be6204f71e864be842f83e2cb03b3df7684470b1407c43282ad29",
+  "protocol_file_sha256": "3fccffb2421d9e96c2596090e69423ecfd16e0a87657b317e91b7456a79f2a18",
+  "fresh_image_check": {
+    "passed": true,
+    "images": 1650,
+    "new_cohorts": 0,
+    "summary": "A separate check on 1,650 previously unused images passed: 98.04% class-balanced agreement on 1,300 NCT images and 94.57% accuracy on 350 STARC SMALL images. These images come from previously studied sources.",
+    "frames": {
+      "nct_fresh": {
+        "total": 1300,
+        "correct": 1268,
+        "accuracy": 0.9753846153846154,
+        "balanced_accuracy_present_reference_classes": 0.9804444444444445,
+        "per_class_recall": {
+          "ADI": 0.99,
+          "BACK": 1.0,
+          "DEB": 0.97,
+          "LYM": 0.99,
+          "MUC": 0.99,
+          "MUS": 0.97,
+          "NORM": 0.99,
+          "STR": 0.964,
+          "TUM": 0.96
+        },
+        "confusion_matrix": [
+          [
+            99,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            100,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            97,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            0,
+            1,
+            99,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            99,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            97,
+            0,
+            3,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            99,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            8,
+            0,
+            3,
+            6,
+            0,
+            482,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            2,
+            0,
+            96
+          ]
+        ],
+        "class_order": [
+          "ADI",
+          "BACK",
+          "DEB",
+          "LYM",
+          "MUC",
+          "MUS",
+          "NORM",
+          "STR",
+          "TUM"
+        ],
+        "log_loss": 0.09710681922843699,
+        "multiclass_brier": 0.04380019924552876,
+        "per_class_counts": {
+          "ADI": {
+            "support": 100,
+            "correct": 99
+          },
+          "BACK": {
+            "support": 100,
+            "correct": 100
+          },
+          "DEB": {
+            "support": 100,
+            "correct": 97
+          },
+          "LYM": {
+            "support": 100,
+            "correct": 99
+          },
+          "MUC": {
+            "support": 100,
+            "correct": 99
+          },
+          "MUS": {
+            "support": 100,
+            "correct": 97
+          },
+          "NORM": {
+            "support": 100,
+            "correct": 99
+          },
+          "STR": {
+            "support": 500,
+            "correct": 482
+          },
+          "TUM": {
+            "support": 100,
+            "correct": 96
+          }
+        }
+      },
+      "starc_small_fresh": {
+        "total": 350,
+        "correct": 331,
+        "accuracy": 0.9457142857142857,
+        "balanced_accuracy_present_reference_classes": 0.9457142857142857,
+        "per_class_recall": {
+          "ADI": 0.98,
+          "DEB": 0.86,
+          "LYM": 1.0,
+          "MUC": 1.0,
+          "MUS": 0.88,
+          "NORM": 1.0,
+          "TUM": 0.9
+        },
+        "confusion_matrix": [
+          [
+            49,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            43,
+            1,
+            2,
+            0,
+            0,
+            2,
+            2
+          ],
+          [
+            0,
+            0,
+            0,
+            50,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            50,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            44,
+            0,
+            4,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            50,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            2,
+            0,
+            2,
+            0,
+            45
+          ]
+        ],
+        "class_order": [
+          "ADI",
+          "BACK",
+          "DEB",
+          "LYM",
+          "MUC",
+          "MUS",
+          "NORM",
+          "STR",
+          "TUM"
+        ],
+        "log_loss": 0.21409638299091455,
+        "multiclass_brier": 0.09355043127309931,
+        "per_class_counts": {
+          "ADI": {
+            "support": 50,
+            "correct": 49
+          },
+          "BACK": {
+            "support": 0,
+            "correct": 0
+          },
+          "DEB": {
+            "support": 50,
+            "correct": 43
+          },
+          "LYM": {
+            "support": 50,
+            "correct": 50
+          },
+          "MUC": {
+            "support": 50,
+            "correct": 50
+          },
+          "MUS": {
+            "support": 50,
+            "correct": 44
+          },
+          "NORM": {
+            "support": 50,
+            "correct": 50
+          },
+          "STR": {
+            "support": 0,
+            "correct": 0
+          },
+          "TUM": {
+            "support": 50,
+            "correct": 45
+          }
+        }
+      }
+    },
+    "release_checks": {
+      "nct_equal_class_macro_nondecrease": true,
+      "nct_stroma_correct_nondecrease": true,
+      "other_nct_classes_at_most_one_lost_correct": true,
+      "starc_small_strict_correct_improvement": true
+    },
+    "result_file_sha256": "c3d8b5c30dadd44f5d6d3e00cbd9c53de5da1e22f6c2f8954856b2d31606f509",
+    "verification_file_sha256": "119b9860e9b3229fb1a0bb479a52880368aa2095fa185b80780fa5ddfc1fb586"
+  },
+  "historical_crc_stroma_tradeoff": {
+    "original_correct": 383,
+    "candidate_correct": 381,
+    "reference_stroma": 421,
+    "prior_strict_retention_gate_passed": false
+  },
+  "saved_examples_note": "Saved example collections retain their recorded model versions. New scans use the configured updated classifier.",
+  "limitations": [
+    "The NCT release check oversampled stroma; its reported score weights the nine classes equally.",
+    "Exact image duplicates were excluded. Per-image patient identifiers and near-duplicate independence remain unverified.",
+    "The earlier reused CRC stroma check lost two correct predictions; its failure remains recorded.",
+    "Model scores and review flags are not calibrated probabilities of correctness.",
+    "These results do not measure uploaded-image accuracy, semantic search quality, breast spatial measurements or cell detection.",
+    "Foundation-model pretraining overlap is unknown."
+  ],
+  "sha256": "9e82caed6bb312245129e780a291a01d36bf4d3dcbcb82f8b75dc33154471df8"
+}

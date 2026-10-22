@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tissology</title>
+  <link rel="stylesheet" href="static/style.css?v=15">
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-inner">
+      <a class="brand" href="#study">Tissology</a>
+      <a href="semantic" data-feature-link="semantic" hidden>Describe &amp; search</a>
+      <span id="collection-label">CRC image study</span>
+      <a class="text-button" id="spatial-link" href="spatial" hidden>Spatial pilot</a>
+      <button class="text-button" data-screen="atlas">Browse images</button>
+    </div>
+  </header>
+  <main>
+    <nav class="steps" aria-label="Study workflow">
+      <button data-screen="study" class="active" aria-current="step"><span>1</span> Model estimates</button>
+      <button data-screen="audit"><span>2</span> Review images</button>
+      <button data-screen="results"><span>3</span> Corrected results</button>
+    </nav>
+    <div id="notice" role="status" aria-live="polite"></div>
+    <details class="optional-study-tools"><summary>Optional tools</summary>
+      <a href="semantic" data-feature-link="semantic" hidden>Find images for a research question</a>
+      <details><summary>Advanced model settings</summary><p>The study's selected measurements determine its calculations. Classifier changes are a separate development workflow.</p><a href="feedback" data-feature-link="feedback" hidden>Customize the nine-class colorectal classifier</a></details>
+    </details>
+    <section id="screen-study" class="screen" aria-labelledby="study-title">
+      <h1 id="study-title" tabindex="-1">Check the model’s tissue estimates.</h1>
+      <p class="intro" id="study-intro">Loading the image collection…</p>
+      <div class="study-actions">
+        <div class="actions">
+          <button class="primary" id="start-review" data-go="audit">Start a review</button>
+          <button class="secondary" id="open-example" hidden>See completed example</button>
+          <button class="secondary" data-screen="atlas">Browse images</button>
+        </div>
+        <p class="simulation-note"><strong>Demo: reveal existing dataset labels to simulate checking images.</strong></p>
+        <p class="muted small" id="example-note" hidden></p>
+      </div>
+      <section class="panel" id="model-quality" aria-labelledby="quality-title" hidden>
+        <h2 id="quality-title">How often is the model right?</h2>
+        <p class="muted">Accuracy means the predicted tissue class matches the dataset’s reference label, across all nine classes.</p>
+        <p class="small muted" id="model-explanation"></p>
+        <div id="accuracy-summary"></div>
+        <p class="scope-note" id="accuracy-scope"></p>
+        <details class="settings" id="accuracy-details">
+          <summary>Accuracy by class, common mistakes, and model details</summary>
+          <div id="accuracy-breakdown"></div>
+        </details>
+      </section>
+      <section class="panel" id="test-evaluations" aria-labelledby="test-evaluation-title">
+        <h2 id="test-evaluation-title">Performance on test collections</h2>
+        <p class="scope-note" id="test-evaluation-status">Loading test results…</p>
+        <div id="test-evaluation-results" hidden>
+          <div class="table-scroll">
+            <table id="test-evaluation-table">
+              <thead><tr><th scope="col">Test set</th><th scope="col">Images</th><th scope="col">Accuracy</th><th scope="col">Balanced accuracy</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <p class="small muted test-metric-note">Accuracy counts all images equally. Balanced accuracy gives each tissue class equal weight by averaging class recall. These are dataset benchmarks; they do not establish clinical performance.</p>
+          <div id="test-evaluation-details"></div>
+        </div>
+      </section>
+      <section class="panel" aria-labelledby="estimates-title">
+        <h2 id="estimates-title">What the model predicts</h2>
+        <p class="muted">The question: what percentage of the images belongs to each of these tissue classes?</p>
+        <div class="table-scroll">
+          <table class="measurement-table" id="initial-estimates">
+            <thead><tr><th scope="col">Tissue class</th><th scope="col">Model estimate</th><th scope="col">Images labeled by the model</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <p class="scope-note">These percentages describe how common each class is in the collection. They are different from model accuracy. They count whole images, not tissue area or cells. Six other classes are also present, so these three percentages need not add to 100%.</p>
+      </section>
+      <details class="details-block">
+        <summary>Measurement definitions and data source</summary>
+        <div id="definitions"></div>
+        <p id="population-description"></p>
+        <dl id="study-details"></dl>
+      </details>
+    </section>
+
+    <section id="screen-audit" class="screen" hidden aria-labelledby="audit-title">
+      <div class="heading-row"><h1 id="audit-title" tabindex="-1">Review a sample of images</h1><button class="secondary" id="new-review" hidden>Start another review</button></div>
+      <p class="intro">Check the model’s labels. Each checked image contributes to all three measurements.</p>
+      <section class="panel" id="plan-panel" aria-labelledby="plan-title">
+        <h2 id="plan-title">How many images will you check?</h2>
+        <p id="sampling-description">We’ll select a random sample across all study images. The checked labels will correct the model’s estimates for the collection.</p>
+        <form id="plan-form">
+          <div class="budget-row">
+            <label for="budget">Images to review<input id="budget" type="number" min="8" value="120" required></label>
+            <span id="budget-context" class="muted"></span>
+            <button class="primary" type="submit" id="select-images">Select 120 images</button>
+          </div>
+          <details class="settings" id="sampling-settings">
+            <summary>Sampling settings</summary>
+            <div class="settings-fields">
+              <label for="method">Sampling method<select id="method"><option value="uniform" selected>Random across all images · model-assisted (default)</option><option value="stratified">Random within model classes</option><option value="manual">Random across all images · manual-only</option><option value="shared">Shared pilot allocation · experimental</option></select></label>
+              <label for="seed">Random seed<input id="seed" type="number" min="0" max="4294967295" value="20261019" required></label>
+            </div>
+            <p class="small muted" id="sampling-default-note">Uniform model-assisted sampling is the default: it gave narrower uncertainty ranges in the saved method comparisons. Open Corrected results to inspect those comparisons. Shared allocation remains experimental.</p>
+            <p class="small muted" id="budget-note"></p>
+          </details>
+        </form>
+      </section>
+      <div id="audit-workspace" aria-live="polite"></div>
+      <details class="details-block" id="saved-reviews">
+        <summary>Open a saved review</summary>
+        <label for="audit-select">Saved reviews</label>
+        <select id="audit-select"><option value="">Choose a review</option></select>
+        <p class="small muted">Each saved review has its own fixed sample and recorded labels.</p>
+      </details>
+    </section>
+
+    <section id="screen-results" class="screen" hidden aria-labelledby="results-title">
+      <div class="heading-row"><h1 id="results-title" tabindex="-1">Compare the estimates</h1><a id="export-link" class="secondary" hidden>Download study record</a></div>
+      <div id="results-content"></div>
+      <details class="details-block evaluation">
+        <summary>Research comparison: how do the sampling methods perform?</summary>
+        <p class="muted">This separate evaluation reveals reference totals for all study images and compares repeated simulated reviews. It is not used to choose labels in your review.</p>
+        <button class="secondary" id="load-evaluation">Load method comparison</button>
+        <div id="evaluation-content"></div>
+      </details>
+    </section>
+
+    <section id="screen-atlas" class="screen" hidden aria-labelledby="atlas-title">
+      <h1 id="atlas-title" tabindex="-1">Browse the study images</h1>
+      <p class="intro">Inspect a prediction or find similar-looking images. Browsing does not change the review sample.</p>
+      <div class="toolbar">
+        <label for="class-filter">Model label<select id="class-filter"><option value="ALL">All nine classes</option></select></label>
+        <label for="tile-order">Order<select id="tile-order"><option value="id">Collection order</option><option value="margin">Smallest model score gap</option></select></label>
+        <span id="tile-count" class="muted"></span>
+        <button class="secondary" id="reset-neighbors" hidden>Show all images</button>
+      </div>
+      <p class="small muted" id="gallery-caption">Select an image to inspect its prediction.</p>
+      <div class="tile-grid" id="gallery"></div>
+      <button class="secondary more" id="load-more">Show more images</button>
+      <details class="details-block">
+        <summary>Explore the image embedding plot</summary>
+        <p class="muted" id="atlas-description">Each point is an image. Nearby points have similar model features; they are not physically adjacent tissue.</p>
+        <svg id="atlas-plot" viewBox="0 0 580 320" role="img" aria-label="PCA projection of image features"></svg>
+      </details>
+    </section>
+    <footer>CRC research demo · Estimates describe this fixed image collection.</footer>
+  </main>
+  <dialog id="tile-dialog" aria-labelledby="inspector-title">
+    <button class="dialog-close" aria-label="Close image inspector">×</button>
+    <div id="tile-inspector"></div>
+  </dialog>
+  <script src="static/lab-session.js?v=2"></script><script src="static/app.js?v=16"></script>
+  <script src="static/navigation.js?v=13"></script>
+</body>
+</html>

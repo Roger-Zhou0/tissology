@@ -1,0 +1,10 @@
+# Install the matching CPU-only Torch 2.8.0 and TorchVision 0.23.0 separately
+# from https://download.pytorch.org/whl/cpu (see Dockerfile cpu-inference).
+# CONCH source and model weights must be privately provisioned by an approved
+# user; they are deliberately not dependencies of the public source package.
+transformers==4.56.1
+tokenizers==0.22.0
+huggingface-hub==0.34.4
+timm==1.0.19
+ftfy==6.3.1
+einops==0.8.1

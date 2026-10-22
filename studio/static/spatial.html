@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spatial area pilot · Tissology</title>
+  <link rel="stylesheet" href="static/style.css?v=15">
+  <link rel="stylesheet" href="static/spatial.css?v=3">
+</head>
+<body>
+  <header class="app-header"><div class="header-inner"><a class="brand" href="./">Tissology</a><a href="./">Back to CRC study</a></div></header>
+  <main class="spatial-main">
+    <h1>Review tissue areas in selected regions</h1>
+    <p class="intro" id="spatial-intro">Loading the spatial pilot…</p>
+    <p class="simulation-note"><strong>Engineering pilot:</strong> frozen MuTILs predictions, with no training by this project. Existing manual annotations simulate review. Results describe these selected fields of view.</p>
+    <div id="spatial-notice" role="status" aria-live="polite"></div>
+    <section class="panel" aria-labelledby="spatial-estimates-title">
+      <h2 id="spatial-estimates-title">1. Initial area estimates</h2>
+      <div class="table-scroll"><table id="spatial-initial"><thead><tr><th>Measurement</th><th>Model estimate</th></tr></thead><tbody></tbody></table></div>
+      <p class="scope-note">Each numerator is the total number of pixels assigned to that tissue component. The shared denominator is all eligible epithelial or stromal pixels across the selected windows; other regions are excluded. Epithelial and stromal fractions add to 100%. Dense lymphocytic tissue is a subset of stroma, so these three rows are not separate parts of a whole. These are area fractions without physical units, not cell counts or cell densities.</p>
+    </section>
+    <section class="panel" id="spatial-plan-panel">
+      <h2>2. Choose a fixed review budget</h2>
+      <p>Windows are sampled uniformly without replacement from the images. Each reviewed window supplies all three measurements. Complete the selected sample before interpreting uncertainty.</p>
+      <form id="spatial-plan-form">
+        <div class="budget-row"><label>Windows to review<input id="spatial-budget" type="number" min="1" value="24" required></label><button class="primary" type="submit">Select windows</button></div>
+        <details class="settings"><summary>Sampling settings</summary><div class="settings-fields">
+          <label>Estimator<select id="spatial-method"><option value="uniform">Uniform model-assisted</option><option value="manual">Manual-only random sample</option></select></label>
+          <label>Random seed<input id="spatial-seed" type="number" min="0" value="1729" required></label>
+        </div><p class="small muted">Both methods use the same probability sampling design and budget. Model-assisted estimates add sampled reference-minus-prediction corrections to the frozen model totals. The predictor does not learn from review.</p></details>
+      </form>
+    </section>
+    <div id="spatial-review"></div>
+    <section class="panel" id="spatial-results" hidden><h2>3. Corrected area estimates</h2><div id="spatial-result-content"></div></section>
+    <details class="details-block"><summary>Open a saved spatial review</summary><label for="spatial-saved">Saved reviews</label><select id="spatial-saved"><option value="">Choose a review</option></select></details>
+    <footer>Spatial engineering pilot · Simulated review · Finite selected-image population</footer>
+  </main>
+  <script src="static/lab-session.js?v=2"></script><script src="static/spatial.js?v=2"></script>
+<script src="static/navigation.js?v=13"></script></body>
+</html>

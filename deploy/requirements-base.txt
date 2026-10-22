@@ -1,0 +1,8 @@
+# Python 3.11. Pinned direct dependencies; this is not a transitive hash lock.
+# Keep Torch and gated model code out of the default application image.
+numpy==2.2.6
+scipy==1.16.2
+Pillow==11.3.0
+fastapi==0.116.1
+uvicorn==0.35.0
+scikit-learn==1.7.2

@@ -1,0 +1,50 @@
+{
+  "schema": "tissue-search-starters-v1",
+  "scope": "Predefined starting queries for broad colorectal tissue classes. Exact wording is editable; suggestions are not reference annotations, arbitrary-description validation, cell counts or spatial measurements.",
+  "sources": [
+    {
+      "title": "Official NCT-CRC-HE-100K dataset and class definitions",
+      "url": "https://zenodo.org/records/1214456"
+    },
+    {
+      "title": "Kather et al., PLOS Medicine, Figures 1 and 2",
+      "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002730"
+    },
+    {
+      "title": "Histology Guide: mesentery and adipose tissue",
+      "url": "https://histologyguide.com/slideview/MH-024-mesentery/03-slide-3.html"
+    }
+  ],
+  "starters": [
+    {
+      "id": "empty-spaces",
+      "title": "Large empty spaces",
+      "term": "Fat (adipose tissue)",
+      "target": "ADI",
+      "description": "Large empty-looking spaces with thin borders.",
+      "query": "a histopathology image of adipose tissue"
+    },
+    {
+      "id": "round-cells",
+      "title": "Packed round cells",
+      "term": "Lymphocytes",
+      "target": "LYM",
+      "description": "Many small round cells packed together.",
+      "query": "lymphocytes"
+    },
+    {
+      "id": "gland-shapes",
+      "title": "Regular gland shapes",
+      "term": "Normal colon lining",
+      "target": "NORM",
+      "description": "Regularly arranged gland shapes.",
+      "query": "normal colorectal mucosa"
+    }
+  ],
+  "development_selection": {
+    "report": "reports/search-starters-development-001.json",
+    "report_sha256": "9f801036d2a61049b32a6534873782d362e65d5e4b577e2d5150e66822f6913a",
+    "population": 4500,
+    "scope": "Wording selected using already-consumed development labels for broad tissue classes; not an independent accuracy estimate and not evidence for arbitrary descriptions. No labels are automatically attached when selecting a starter."
+  }
+}

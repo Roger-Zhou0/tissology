@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Example tissue study · Tissology</title>
+  <link rel="stylesheet" href="static/style.css?v=15">
+  <link rel="stylesheet" href="static/presentation.css?v=10">
+  <link rel="stylesheet" href="static/research.css?v=7">
+</head>
+<body class="research-workspace">
+  <header class="app-header"><div class="header-inner">
+    <a class="brand" href="?step=home">Tissology</a>
+    <nav class="workspace-navigation" aria-label="Workspaces">
+      <a href="?step=home" aria-current="page">Example study</a>
+      <a href="collections" data-feature-link="collections" hidden>Scan collection</a>
+      <a href="semantic" data-feature-link="semantic" hidden>Image library</a>
+      <details class="optional-study-tools"><summary>More tools</summary>
+        <div class="optional-tools-menu">
+          <a href="classification">Colorectal tile study</a>
+          <a href="spatial">Earlier spatial pilot</a>
+          <details><summary>Advanced model settings</summary><p>Develop and test a classifier using separate correction labels.</p><a href="feedback" data-feature-link="feedback" hidden>Open classifier correction</a></details>
+        </div>
+      </details>
+    </nav>
+  </div></header>
+  <main class="research-main">
+    <div class="workspace-heading"><div><p class="workspace-breadcrumb" id="research-breadcrumb">Your workspace</p>
+      <h1 id="research-title">Example tissue study</h1><p class="intro" id="research-subtitle">Explore tissue-area measurements on a prepared breast collection. Existing annotations simulate review.</p></div>
+      <button class="secondary" id="research-new-study" type="button">+ New example run</button></div>
+    <div id="research-context" class="research-context" hidden></div>
+    <p class="research-simulation"><span class="demo-label">Simulated review</span> Existing dataset annotations · tissue areas, not cell counts · selected image regions</p>
+    <div id="research-status" role="status" aria-live="polite"></div>
+    <div id="research-error" role="alert" hidden></div>
+    <p id="research-saved-notice" class="research-selection-note" role="status" hidden></p>
+    <nav class="research-steps" aria-label="Study workspace" hidden>
+      <button type="button" data-step="overview">Overview</button>
+      <button type="button" data-step="initial" disabled>Tissue</button>
+      <button type="button" data-step="review" disabled>Audit</button>
+      <button type="button" data-step="results" disabled>Results</button>
+    </nav>
+    <section id="research-screen" aria-live="off"><p>Loading the prepared study collection…</p></section>
+    <footer class="research-footer">Prepared study example · Results describe the selected breast regions. <a href="semantic" data-feature-link="semantic" hidden>Open the colorectal image library →</a></footer>
+  </main>
+  <script src="static/lab-session.js?v=2"></script><script src="static/research.js?v=11"></script>
+  <script src="static/navigation.js?v=13"></script>
+</body>
+</html>

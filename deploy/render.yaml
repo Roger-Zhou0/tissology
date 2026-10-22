@@ -1,0 +1,24 @@
+# Preview-only: starts an empty workspace, without models or persistent data.
+# Review Render's current limits before creation. No service is created by
+# adding this file to GitHub. Select this path when importing a Blueprint.
+services:
+  - type: web
+    name: tissology
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /healthz
+    envVars:
+      - key: TISSUE_DATA_DIR
+        value: /data
+      - key: TISSUE_EXECUTION_BACKEND
+        value: local
+      - key: TISSUE_CPU_THREADS
+        value: "1"
+      - key: TISSUE_ACCESS_PASSWORD
+        sync: false
+      - key: OMP_NUM_THREADS
+        value: "1"
+      - key: OPENBLAS_NUM_THREADS
+        value: "1"

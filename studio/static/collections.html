@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Collections · Tissology</title>
+  <link rel="stylesheet" href="static/style.css?v=15">
+  <link rel="stylesheet" href="static/presentation.css?v=10">
+  <link rel="stylesheet" href="static/collections.css?v=13">
+  <link rel="stylesheet" href="static/region-selector.css?v=2">
+  <link rel="stylesheet" href="static/scan-check.css?v=1">
+</head>
+<body class="collections-workspace">
+<header class="app-header"><div class="header-inner">
+  <a class="brand" href="research?step=home">Tissology</a>
+  <nav class="workspace-navigation" aria-label="Workspace navigation"><a href="research?step=home">Studies</a><a href="collections" aria-current="page">Scan collection</a><a href="semantic" data-feature-link="semantic" hidden>Image library</a></nav>
+</div></header>
+<main class="collections-main">
+  <div class="workspace-heading"><div><p class="workspace-breadcrumb" id="collection-breadcrumb">Your workspace</p><h1 id="collection-title">Image collections</h1><p class="intro" id="collection-subtitle">Add images, scan for tissue types, and inspect the results.</p></div><button id="add-collection" class="primary" type="button">Add collection</button></div>
+  <p class="scan-scope">Preliminary tissue classification <span aria-hidden="true">·</span> Colorectal H&amp;E tiles <span aria-hidden="true">·</span> 9 classes</p>
+  <div id="collection-error" role="alert" hidden></div><p id="collection-message" role="status" aria-live="polite"></p>
+  <section id="collections-home" aria-labelledby="collection-title"><p id="collections-loading" class="collection-loading" role="status">Loading your collections…</p><div id="collection-list"></div><details id="scanner-validation" class="scanner-validation" hidden><summary>Current scanner · benchmark accuracy</summary><div id="scanner-validation-content"></div></details></section>
+  <section id="collection-workspace" hidden aria-labelledby="collection-title">
+
+    <div id="scan-progress" class="scan-progress" role="status" aria-live="polite" hidden></div>
+    <div class="collection-toolbar"><nav class="collection-flow" aria-label="This collection"><span aria-current="page">Images</span><a id="collection-search-tab" hidden>Search images</a><a id="collection-findings-tab" hidden>Findings</a></nav><div class="actions"><button id="resume-upload" class="primary" type="button" hidden>Resume upload</button><button id="resume-folder" class="primary" type="button" hidden>Resume folder import</button><button id="finish-import" type="button" hidden>Finish with imported images</button><button id="start-scan" class="primary" type="button" hidden>Scan images</button><a id="open-collection-report" class="secondary" hidden>Open report</a><details id="collection-tools" class="collection-tools"><summary aria-label="Collection actions">More</summary><div class="collection-tools-menu"><a id="search-collection" class="text-button" hidden>Search this collection</a><button id="show-collection-teaching" class="text-button" type="button" hidden>Teach this collection</button><button id="refresh-collection" class="text-button" type="button">Refresh collection</button><a id="download-collection" class="text-button" hidden>Download predictions</a></div></details></div></div>
+    <p id="collection-search-status" class="scope-note" hidden></p>
+    <div id="collection-version-bar" class="collection-version-bar" hidden><label for="prediction-version">Prediction version<select id="prediction-version"></select></label><p id="prediction-version-note" class="scope-note"></p></div>
+
+    <details id="scan-check-panel" class="scan-check-panel" hidden>
+      <summary><span>Check this scan</span><span id="scan-check-summary" class="scope-note">Estimate accuracy on your images</span></summary>
+      <div class="scan-check-body"><div id="scan-check-content"></div><p id="scan-check-status" role="status" aria-live="polite"></p><p id="scan-check-error" role="alert" hidden></p></div>
+    </details>
+
+    <div class="scan-layout">
+      <section class="scan-summary" aria-label="Scan summary">
+        <div class="scan-metrics">
+          <div class="scan-metric"><strong id="scan-metric-scanned">—</strong><span>Images scanned</span><small id="scan-metric-coverage"></small></div>
+          <button id="scan-filter-flagged" class="scan-metric" type="button" aria-controls="collection-gallery" aria-pressed="false"><strong id="scan-metric-flagged">—</strong><span>Flagged by model</span><small>Inspect flagged images</small></button>
+          <div class="scan-metric"><strong id="scan-metric-reviewed">—</strong><span>Inspection reviews</span><small id="scan-metric-review-note">Selected version · separate from random checks</small></div>
+        </div>
+        <p id="flag-reason-summary" class="scope-note" hidden></p>
+        <details id="overview-disclosure" class="overview-disclosure" open>
+          <summary><h2 id="summary-heading">Top predicted classes</h2></summary>
+          <div class="overview-body">
+            <p id="summary-note" class="scope-note">Percentage of scanned images. Example thumbnails are illustrative.</p>
+            <div id="class-summary"></div>
+            <p id="summary-filter-note" class="scope-note">Select a class to show all its images below. This clears filename and review filters.</p>
+            <div class="scan-summary-tools">
+              <button id="summary-expand" class="text-button" type="button" aria-controls="class-summary" aria-expanded="false" hidden>Show all 9 tissue classes</button>
+              <details class="scan-method"><summary>About these predictions</summary><p id="review-rule" class="scope-note"></p><p>Class counts describe images, not tissue area or cell counts. Example images span model scores; they are not an expert-verified or representative sample.</p><p>This classifier recognizes nine broad classes from colorectal H&amp;E image tiles. Other organs, stains and whole-slide images are outside its tested scope.</p><p>Model scores do not establish accuracy on your collection. These predictions support inspection; they are not a diagnosis or an audited measurement.</p><div id="scan-provenance"></div></details>
+            </div>
+          </div>
+        </details>
+      </section>
+      <div class="scan-images"><div class="images-heading"><div><h2>Images</h2><div id="collection-facts" class="collection-facts"></div></div><span id="image-count" class="scope-note"></span></div>
+        <div class="image-filters"><form id="filename-form" class="filename-search"><label for="filename-search">Filename<input id="filename-search" type="search" maxlength="250" placeholder="Filename or folder" autocomplete="off"></label><button type="submit">Find</button></form><label for="class-filter">Tissue class<select id="class-filter"><option value="">All classes</option></select></label><label for="review-filter">Review status<select id="review-filter"><option value="all">All images</option><option value="needs_review">Flagged by model</option></select></label><button id="clear-filters" class="text-button" type="button" hidden>Clear filters</button></div>
+        <div id="collection-view-resume" class="collection-view-resume" hidden><p id="collection-view-note" role="status"></p><button id="reset-collection-view" class="text-button" type="button">Reset view</button></div>
+        <p id="images-message" role="status"></p><div id="collection-gallery" class="collection-gallery"></div>
+        <nav id="collection-pagination" class="collection-pagination" aria-label="Image pages" hidden><button id="page-previous" type="button">Previous</button><span id="page-position"></span><form id="page-jump-form"><label for="page-jump">Page</label><input id="page-jump" type="number" min="1" step="1" value="1" inputmode="numeric"><span id="page-total"></span><button type="submit">Go</button></form><label class="page-size-label" for="page-size">Per page<select id="page-size"><option value="24">24</option><option value="48">48</option><option value="96">96</option></select></label><button id="page-next" type="button">Next</button></nav>
+        <section id="review-batch-panel" class="review-batch-panel" hidden aria-labelledby="review-batch-heading"><div><h2 id="review-batch-heading">Review a small batch</h2><p id="review-batch-description">Inspect a varied set of up to 20 images. Save your assessments and continue later.</p><p id="review-batch-status" role="status" aria-live="polite"></p></div><div class="review-batch-actions"><button id="start-review-batch" class="primary" type="button">Review 20 images</button><a id="export-review-batch" class="text-button" hidden>Download batch record</a></div><p class="scope-note">Targeted inspection across predicted classes. This does not measure collection accuracy.</p></section>
+      </div>
+    </div>
+    <details id="collection-teaching" class="collection-teaching" hidden><summary><span>Teach this collection</span><span id="teaching-summary" class="scope-note">Optional</span></summary><div class="teaching-body"><p class="teaching-intro">Use your reviewed labels to make a candidate, check it on separate images, then decide whether to use it.</p><div id="teaching-content"></div><p id="teaching-status" class="scope-note" role="status" aria-live="polite"></p><p id="teaching-error" role="alert" hidden></p></div></details>
+    <section id="collection-findings" class="collection-findings" hidden aria-labelledby="collection-findings-heading"><h2 id="collection-findings-heading">Saved findings</h2><p class="scope-note">Your descriptions and selected image evidence, kept with this collection.</p><div id="collection-findings-list"></div><p id="collection-findings-status" class="scope-note" role="status" aria-live="polite"></p><button id="collection-findings-more" type="button" hidden>Show older findings</button></section>
+    <details id="collection-issues" class="collection-issues" hidden><summary id="issues-heading">Import issues</summary><div id="issues-list"></div></details>
+  </section>
+  <footer>Images, reviews and saved findings stay with their collection. Prepared study examples use separate datasets.</footer>
+</main>
+<dialog id="import-dialog" aria-labelledby="import-heading"><div class="dialog-heading"><div><h2 id="import-heading">Add an image collection</h2><p>Upload image tiles or import a folder already on Delta.</p></div><button id="close-import" type="button" aria-label="Close add collection">Close</button></div>
+  <form id="import-form"><p id="import-resume-note" class="import-resume-note" hidden></p><label for="import-name">Collection name<input id="import-name" name="name" required maxlength="120" placeholder="For example: Pilot tissue collection" autocomplete="off"></label>
+    <label class="domain-field" for="import-domain">Image collection type<select id="import-domain" required><option value="" selected disabled>Select your image collection type</option><option value="colorectal_he">Colorectal H&amp;E tiles — import and scan</option><option value="unknown">Other / not sure — import for browsing</option></select></label><p id="domain-note" class="scope-note">Uses the colorectal tissue classifier. Select Other if the organ or stain differs.</p>
+    <div class="import-tabs" role="group" aria-label="Image source"><button id="upload-tab" type="button" aria-pressed="true">Upload images</button><button id="folder-tab" type="button" aria-pressed="false">Delta folder</button></div>
+    <div id="upload-fields"><div id="upload-dropzone" class="upload-dropzone"><label for="import-files">Choose images or drop them here</label><p>JPEG, PNG or single-image TIFF tiles</p><input id="import-files" name="files" type="file" accept="image/jpeg,image/png,image/tiff,.jpg,.jpeg,.png,.tif,.tiff" multiple><div class="upload-folder-choice"><button id="choose-upload-directory" type="button">Choose a folder from this computer</button><input id="import-directory" type="file" webkitdirectory multiple hidden><span>Includes subfolders; non-image files are skipped.</span></div></div><p id="upload-selection" class="scope-note">No images selected.</p></div>
+    <div id="folder-fields" hidden><label for="import-path">Existing folder on Delta<input id="import-path" name="path" placeholder="/projects/…/my-images" autocomplete="off" spellcheck="false"></label><p class="scope-note">Selected images are copied into this collection. Subfolders are included.</p><details><summary>Available storage locations</summary><ul id="allowed-roots"></ul><p id="folder-unavailable" hidden>No import folders are configured for this server.</p></details></div>
+    <p id="import-limits" class="scope-note"></p><p class="import-scope">Scanning supports colorectal H&amp;E tiles. Other images can be imported for browsing; whole-slide images and cell detection are outside this workflow.</p>
+    <div id="import-error" role="alert" hidden></div><div id="import-progress" role="status" aria-live="polite" hidden></div><details id="upload-outcomes" hidden><summary>Upload details</summary><ul id="upload-failures"></ul></details><div class="actions"><button id="import-submit" class="primary" type="submit">Add collection</button><button id="pause-upload" type="button" hidden>Pause upload</button><button id="cancel-import" type="button">Cancel</button></div>
+  </form>
+</dialog>
+<dialog id="image-dialog" aria-labelledby="image-detail-heading"><div class="dialog-heading"><div><p class="workspace-breadcrumb">Image inspection</p><h2 id="image-detail-heading">Image details</h2></div><button id="close-image" type="button">Close</button></div><div id="image-detail"></div><div class="image-detail-navigation"><button id="detail-previous" type="button">Previous image</button><span id="detail-position"></span><button id="detail-next" type="button">Next image</button></div></dialog>
+<dialog id="teaching-check-dialog" aria-labelledby="teaching-check-heading"><div class="dialog-heading"><div><p class="workspace-breadcrumb">Separate image check</p><h2 id="teaching-check-heading">What tissue is shown?</h2><p id="teaching-check-progress"></p></div><button id="close-teaching-check" type="button">Pause check</button></div><p class="scope-note">Both predictions are hidden during this check. These labels are kept out of training.</p><div id="teaching-check-content"></div><p id="teaching-check-error" role="alert" hidden></p></dialog>
+<script src="static/lab-session.js?v=2"></script><script src="static/region-selector.js?v=2"></script><script src="static/scan-check.js?v=1"></script><script src="static/collections.js?v=25"></script><script src="static/navigation.js?v=13"></script>
+</body>
+</html>

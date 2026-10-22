@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workspace · Tissology</title>
+  <link rel="stylesheet" href="static/style.css?v=15">
+  <link rel="stylesheet" href="static/presentation.css?v=10">
+  <link rel="stylesheet" href="static/workspace.css?v=11">
+</head>
+<body class="home-workspace">
+<div class="workspace-shell">
+<header class="app-header"><div class="header-inner"><a class="brand" href="workspace">Tissology</a></div></header>
+<main id="main-content" class="workspace-main">
+  <div class="workspace-hero">
+    <div class="workspace-heading"><div><h1>Workspace</h1><p class="workspace-intro">Open a collection or continue your saved work.</p></div><button type="button" id="workspace-guide-toggle" aria-expanded="false" aria-controls="workflow-guide" aria-haspopup="dialog"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M14 4v16M7 9h3M7 13h3"/></svg>How it works</button></div>
+  </div>
+  <section class="workspace-actions" aria-labelledby="actions-heading">
+    <h2 id="actions-heading" class="visually-hidden">Tools</h2>
+    <p id="workspace-actions-status" role="status">Connecting to available tools…</p>
+    <div class="workspace-action-grid">
+      <a id="workspace-add-collection" class="workspace-action action-collections" href="collections" data-feature-link="collections" hidden aria-labelledby="action-collections-title">
+        <span class="action-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="15" height="15" rx="2"/><path d="M7 3h12a2 2 0 0 1 2 2v12M6 17l4-4 3 3 2-2 3 3"/><circle cx="8" cy="10" r="1"/></svg></span>
+        <div class="action-copy"><h3 id="action-collections-title">Review images</h3><p>Upload a collection, inspect predictions, and record your review.</p><span id="workspace-scan-availability" class="action-scope">Checking scan availability…</span></div><span class="action-go">Open collections <span aria-hidden="true">→</span></span>
+      </a>
+      <a id="workspace-search-library" class="workspace-action action-search" href="collections?next=search" data-feature-link="collections" hidden aria-labelledby="action-search-title">
+        <span class="action-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5M8 10.5h5M10.5 8v5"/></svg></span>
+        <div class="action-copy"><h3 id="action-search-title">Search images</h3><p>Describe what you see, or start with an example image.</p><span class="action-scope">Within a scanned collection</span></div><span class="action-go">Choose a collection <span aria-hidden="true">→</span></span>
+      </a>
+      <a id="workspace-measure-tissue" class="workspace-action action-studies" href="research?step=home" data-feature-link="research" hidden aria-labelledby="action-studies-title">
+        <span class="action-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 3v17h17M8 16v-5M13 16V6M18 16V9"/><path d="m7 6 2 2 4-5"/></svg></span>
+        <div class="action-copy"><h3 id="action-studies-title">Example tissue study</h3><p>Explore area measurements and their image evidence.</p><span class="action-scope">32 prepared breast regions · simulated review</span></div><span class="action-go">Explore example <span aria-hidden="true">→</span></span>
+      </a>
+      <a id="workspace-describe-evidence" class="workspace-action action-descriptions" href="collections?next=describe" data-feature-link="collections" hidden aria-labelledby="action-descriptions-title">
+        <span class="action-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-9"/><path d="m10 14 1-4 8-8 3 3-8 8-4 1ZM6 17h7"/></svg></span>
+        <div class="action-copy"><h3 id="action-descriptions-title">Write a finding</h3><p>Keep your interpretation with the images that support it.</p><span class="action-scope">Save and export an illustrated report</span></div><span class="action-go">Choose a collection <span aria-hidden="true">→</span></span>
+      </a>
+    </div>
+  </section>
+  <aside class="workspace-benchmark" aria-labelledby="benchmark-heading">
+    <div class="benchmark-summary">
+      <p class="benchmark-score"><strong id="workspace-accuracy">—</strong><span>accuracy</span></p>
+      <div class="benchmark-copy"><h2 id="benchmark-heading">Colorectal tissue classification</h2><p id="workspace-accuracy-scope" class="benchmark-scope" role="status">Loading the recorded benchmark…</p><p class="benchmark-limit">9 tissue classes · previously inspected benchmark</p></div>
+    </div>
+    <details id="workspace-benchmark-details" hidden><summary>Benchmark details</summary><div id="workspace-benchmark-record"></div><a id="workspace-benchmark-download" href="static/collection-validation.json">Download benchmark record</a></details>
+  </aside>
+  <section class="workspace-work" aria-labelledby="work-heading">
+    <div class="workspace-section-heading"><div><h2 id="work-heading">Saved work</h2><p>Pick up where you left off.</p></div><button type="button" id="workspace-refresh">Refresh</button></div>
+    <div class="workspace-filters"><label for="workspace-filter">Find saved work<input id="workspace-filter" type="search" placeholder="Search by name or collection" maxlength="500" autocomplete="off"></label><label for="workspace-kind">Show<select id="workspace-kind"><option value="all">All work</option><option value="collection">Image collections</option><option value="study">Tissue studies</option><option value="concept">Saved searches</option><option value="description">Findings</option></select></label></div>
+    <label class="workspace-example-toggle"><input id="workspace-show-examples" type="checkbox"> Include prepared examples in saved work</label>
+    <p id="workspace-status" role="status" aria-live="polite">Loading saved work…</p>
+    <div id="workspace-errors" role="alert" hidden></div>
+    <div id="workspace-items" class="workspace-items" aria-label="Saved work"></div>
+    <nav id="workspace-pagination" class="workspace-pagination" aria-label="Saved work pages" hidden><button type="button" id="workspace-previous" disabled>Previous</button><span id="workspace-page"></span><button type="button" id="workspace-next" disabled>Next</button></nav>
+  </section>
+  <section class="workspace-examples" aria-labelledby="examples-heading">
+    <div class="workspace-section-heading"><div><h2 id="examples-heading">Try an example</h2><p>Explore the workflow with images already here.</p></div></div>
+    <div class="prepared-grid">
+      <article data-example-collection="307b6b38b73f455390059a997ec2ceb2" hidden><p class="eyebrow">18 colorectal tiles</p><h3>Try an image review</h3><p>Explore a small collection and see how predictions and researcher judgments stay together.</p><a href="collections?collection=307b6b38b73f455390059a997ec2ceb2">Open sample collection <span aria-hidden="true">→</span></a></article>
+      <article data-example-collection="38482ea0200b42ef9fffa85e1b939db1" hidden><p class="eyebrow">7,180 colorectal tiles</p><h3>Inspect a complete scan</h3><p>Browse a saved scan and its image details. This example retains its original model version.</p><a href="collections?collection=38482ea0200b42ef9fffa85e1b939db1">Explore scanned images <span aria-hidden="true">→</span></a></article>
+      <article id="workspace-example-study" hidden><p class="eyebrow">Breast tissue · example study</p><h3>Explore an audited result</h3><p>Follow a completed area study with corrected measurements and image evidence. Existing annotations simulate review.</p><a id="workspace-example" href="research?step=home">Open the example study <span aria-hidden="true">→</span></a></article>
+      <article id="workspace-example-library" hidden><p class="eyebrow">4,500 colorectal tiles · example library</p><h3>Try description search</h3><p>Explore a prepared library using your own words and image examples.</p><a href="semantic?panel=find">Open the example library <span aria-hidden="true">→</span></a></article>
+    </div>
+  </section>
+  <footer class="workspace-footer">Tissology · Research prototype</footer>
+</main>
+</div>
+<dialog id="workflow-guide" class="workflow-guide" aria-labelledby="workflow-guide-heading">
+  <div class="workflow-guide-header"><h2 id="workflow-guide-heading">How it works</h2><button type="button" id="workspace-guide-close" aria-label="Close workflow guide" autofocus><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+  <div class="workflow-guide-content">
+    <p class="workflow-guide-intro">Start with a collection of tissue images. Review predictions, find related images, and save findings with their evidence.</p>
+    <div class="workflow-guide-start">
+      <h3>First time here?</h3>
+      <p>Add a collection of supported image tiles to get started. A prepared example appears below when one is available.</p>
+      <ol class="guide-quick-steps"><li>Open an image to inspect its prediction.</li><li>Choose <strong>Find similar</strong> to explore related images.</li><li>Select evidence and write a finding.</li></ol>
+      <a id="workflow-guide-sample" class="primary" href="collections?collection=307b6b38b73f455390059a997ec2ceb2" hidden>Try the 18-image collection <span aria-hidden="true">→</span></a>
+      <p id="workflow-guide-status" role="status">Checking scan availability…</p>
+    </div>
+    <ol class="workflow-guide-steps">
+      <li><h3>Bring your images</h3><p>Choose <strong>Review images</strong> to upload images or select a folder. JPEG, PNG, and single-page TIFF tiles are supported. Whole slides need to be cut into tiles first.</p><p>The current scanner classifies colorectal H&amp;E tiles. Other image types can be imported for browsing.</p></li>
+      <li><h3>Inspect what the scan found</h3><p>A completed scan shows predicted tissue classes and image counts across the collection. Filter the results, then open an image to see its prediction and alternative scores.</p><p>Choose <strong>Confirm</strong>, <strong>Correct</strong>, or <strong>Unsure</strong> to record your judgment. These reviews stay with the image; a correction does not automatically retrain the model.</p></li>
+      <li><h3>Find tissue using words or examples</h3><p>Open an image in a scanned collection and choose <strong>Find similar</strong>, or open <strong>Search images</strong> and try a prepared search. You can begin with an image without knowing its tissue name.</p><p>Choose <strong>Select region</strong> to search using a smaller part of an image. Matches are other whole images; the search does not mark matching locations within them.</p><p>Inspect the suggested matches and mark relevant or irrelevant examples to refine the search. Appearance descriptions are exploratory; search feedback changes the ranking within that collection.</p></li>
+      <li><h3>Turn selected images into a finding</h3><p>Use <strong>Write a finding</strong> to write your interpretation and attach supporting images from the same collection. Save the finding when you are ready to keep a version.</p><p>Download its standalone report with embedded image evidence. Return to <strong>Saved work</strong> on the homepage to reopen a collection or study; saved findings are also listed inside their collection.</p></li>
+    </ol>
+    <div class="workflow-guide-options">
+      <details><summary>How reliable is the scan on my images?</summary><p>Choose <strong>Check this scan</strong> inside a scanned collection. Set a review budget before starting, then label a fixed random sample with the predictions hidden. You can pause and continue the same check.</p><p>After every sampled image has a reference label, the result shows estimated accuracy and an uncertainty interval for the eligible, previously unreviewed images. You can check the current scan without training a new model. An incomplete check has no accuracy result; choose unsure when you cannot label an image.</p></details>
+      <details><summary>Can I teach it from my corrections?</summary><p>Yes. Open <strong>Teach this collection</strong> inside a scanned collection. Explicitly approve using your confirmed or corrected labels to train a candidate classifier.</p><p>Review a separate random sample with both predictions hidden, then inspect how the candidate performed. You decide whether to apply it. Improvement is checked, not assumed; original predictions and older findings retain their versions.</p></details>
+      <details><summary>What does the example tissue study measure?</summary><p><strong>Example tissue study</strong> opens a separate workflow using 32 prepared breast regions. Explore tissue-area measurements, a fixed review sample, and corrected estimates with uncertainty intervals. You can also create another run on the prepared collection.</p><p>Existing reference annotations simulate the review in this example. Uploaded image tiles do not automatically become an area study.</p></details>
+      <details><summary>How should I read the accuracy number?</summary><p>The homepage reports classification accuracy on the named colorectal benchmark. It does not establish accuracy on your uploaded images, the quality of search results, or the accuracy of breast tissue-area measurements.</p><p>A scan is a preliminary way to organize images for inspection. Collection scans assign one tissue class per image; image counts are not tissue areas or cell counts.</p></details>
+      <details><summary>What gets saved?</summary><p>Imported collections, saved reviews, named findings, and studies are stored on this server. An unfinished description is a draft in your browser until you save it.</p><p>Download a report when you want a copy you can keep or share outside the workspace. The report includes the saved finding and its image evidence.</p></details>
+    </div>
+  </div>
+  <div class="workflow-guide-footer">
+    <label for="workflow-guide-dismiss"><input type="checkbox" id="workflow-guide-dismiss" aria-describedby="workflow-guide-preference-note">Don’t show automatically again</label>
+    <p id="workflow-guide-preference-note" role="status">Saved in this browser. Reopen the guide from How it works.</p>
+    <button type="button" id="workflow-guide-done" class="primary">Start using the workspace</button>
+  </div>
+</dialog>
+<script src="static/lab-session.js?v=2"></script><script src="static/navigation.js?v=13"></script><script src="static/workspace.js?v=12"></script>
+</body></html>

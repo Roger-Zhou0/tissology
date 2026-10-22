@@ -1,0 +1,20 @@
+services:
+  studio:
+    build:
+      context: .
+      target: workspace
+    ports:
+      - "127.0.0.1:7860:7860"
+    environment:
+      TISSUE_DATA_DIR: /data
+      TISSUE_EXECUTION_BACKEND: local
+      TISSUE_ACCESS_PASSWORD: ${TISSUE_ACCESS_PASSWORD:?Set a private TISSUE_ACCESS_PASSWORD before starting}
+      PORT: "7860"
+    volumes:
+      - studio-data:/data
+    init: true
+    restart: unless-stopped
+    stop_grace_period: 30s
+
+volumes:
+  studio-data:

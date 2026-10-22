@@ -1,0 +1,359 @@
+{
+  "schema": "collection-scanner-validation-v1",
+  "available": true,
+  "validated_at": "2026-10-18T07:23:06.310314+00:00",
+  "dataset": "CRC-VAL-HE-7K",
+  "image_count": 7180,
+  "label_agreement": 0.9614206128133704,
+  "balanced_accuracy": 0.9528337862690353,
+  "macro_f1": 0.9463143978952904,
+  "weakest_class": {
+    "code": "MUS",
+    "name": "Smooth muscle",
+    "recall": 0.7533783783783784
+  },
+  "scope_note": "Agreement with supplied labels for nine classes of 224 \u00d7 224 colorectal H&E tiles. The model was unchanged; this collection was not used for training.",
+  "model_name": "CONCH + frozen CRC tissue classifier",
+  "limitations": [
+    "This reproduces a previously inspected benchmark; it is not a fresh test of generalization.",
+    "Review flags identified 114 of 277 errors and missed 163. An unflagged image or high model score can still be wrong.",
+    "These results do not establish performance for other organs, whole slides, cell detection or spatial measurements.",
+    "Foundation-model pretraining overlap is unknown. No patient-level uncertainty interval is claimed."
+  ],
+  "report_url": "static/collection-validation.json",
+  "collection_url": "collections?collection=38482ea0200b42ef9fffa85e1b939db1",
+  "collection_id": "38482ea0200b42ef9fffa85e1b939db1",
+  "classifier_sha256": "c55b4f70800235d2a7882099c877de8a0c76e61bceb523f2bb426196e73b7dce",
+  "prediction_sha256": "9dcfd040671198d5e2ea0d992d04ac7ca1493f0757f469d2364705e54032b81e",
+  "evaluation_report_file_sha256": "ec252cf80a8cfe5959f8400dea38e2df67a38ca9c1a887828b5e895a7c2c0d8d",
+  "protocol_file_sha256": "6b71cb6caef1d636d46245f5a8ce4aa57b4cfabf2fd0364cdbd07554dc09968e",
+  "performance": {
+    "page_p95_ms": 55.77723914757371,
+    "detail_p95_ms": 211.99902915395796,
+    "summary_p95_ms": 245.35871297121048,
+    "export_ms": 633.375315926969,
+    "resumed_images": 80,
+    "scope": "Observed sequential internal-HTTP timings on the recorded Delta allocation, after initial index access. Not a cold-start, concurrent-user or Internet latency claim."
+  },
+  "known_benchmark_reproduction": {
+    "correct": 6903,
+    "total": 7180,
+    "accuracy": 0.9614206128133704,
+    "balanced_accuracy": 0.9528337862690353,
+    "macro_f1": 0.9463143978952904,
+    "per_class": [
+      {
+        "label": "ADI",
+        "support": 1338,
+        "correct": 1337,
+        "precision": 0.9947916666666666,
+        "recall": 0.9992526158445441,
+        "f1": 0.9970171513795675
+      },
+      {
+        "label": "BACK",
+        "support": 847,
+        "correct": 847,
+        "precision": 0.9964705882352941,
+        "recall": 1.0,
+        "f1": 0.9982321744254566
+      },
+      {
+        "label": "DEB",
+        "support": 339,
+        "correct": 335,
+        "precision": 0.9436619718309859,
+        "recall": 0.9882005899705014,
+        "f1": 0.9654178674351584
+      },
+      {
+        "label": "LYM",
+        "support": 634,
+        "correct": 632,
+        "precision": 0.9828926905132193,
+        "recall": 0.9968454258675079,
+        "f1": 0.9898198903680502
+      },
+      {
+        "label": "MUC",
+        "support": 1035,
+        "correct": 1028,
+        "precision": 0.995159728944821,
+        "recall": 0.9932367149758454,
+        "f1": 0.9941972920696326
+      },
+      {
+        "label": "MUS",
+        "support": 592,
+        "correct": 446,
+        "precision": 0.9389473684210526,
+        "recall": 0.7533783783783784,
+        "f1": 0.8359887535145267
+      },
+      {
+        "label": "NORM",
+        "support": 741,
+        "correct": 739,
+        "precision": 0.9402035623409669,
+        "recall": 0.9973009446693657,
+        "f1": 0.9679109364767519
+      },
+      {
+        "label": "STR",
+        "support": 421,
+        "correct": 383,
+        "precision": 0.7172284644194756,
+        "recall": 0.9097387173396675,
+        "f1": 0.8020942408376963
+      },
+      {
+        "label": "TUM",
+        "support": 1233,
+        "correct": 1156,
+        "precision": 0.996551724137931,
+        "recall": 0.9375506893755069,
+        "f1": 0.9661512745507731
+      }
+    ],
+    "labels": [
+      "ADI",
+      "BACK",
+      "DEB",
+      "LYM",
+      "MUC",
+      "MUS",
+      "NORM",
+      "STR",
+      "TUM"
+    ],
+    "confusion_matrix": [
+      [
+        1337,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        847,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        335,
+        0,
+        0,
+        0,
+        0,
+        3,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        632,
+        0,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        6,
+        0,
+        0,
+        0,
+        1028,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        446,
+        0,
+        146,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        739,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        6,
+        0,
+        2,
+        28,
+        0,
+        383,
+        2
+      ],
+      [
+        1,
+        1,
+        14,
+        10,
+        3,
+        1,
+        47,
+        0,
+        1156
+      ]
+    ],
+    "top_confusions": [
+      {
+        "reference": "MUS",
+        "predicted": "STR",
+        "count": 146
+      },
+      {
+        "reference": "TUM",
+        "predicted": "NORM",
+        "count": 47
+      },
+      {
+        "reference": "STR",
+        "predicted": "MUS",
+        "count": 28
+      },
+      {
+        "reference": "TUM",
+        "predicted": "DEB",
+        "count": 14
+      },
+      {
+        "reference": "TUM",
+        "predicted": "LYM",
+        "count": 10
+      },
+      {
+        "reference": "MUC",
+        "predicted": "ADI",
+        "count": 6
+      },
+      {
+        "reference": "STR",
+        "predicted": "DEB",
+        "count": 6
+      },
+      {
+        "reference": "DEB",
+        "predicted": "STR",
+        "count": 3
+      },
+      {
+        "reference": "TUM",
+        "predicted": "MUC",
+        "count": 3
+      },
+      {
+        "reference": "LYM",
+        "predicted": "STR",
+        "count": 2
+      },
+      {
+        "reference": "STR",
+        "predicted": "MUC",
+        "count": 2
+      },
+      {
+        "reference": "STR",
+        "predicted": "TUM",
+        "count": 2
+      },
+      {
+        "reference": "ADI",
+        "predicted": "BACK",
+        "count": 1
+      },
+      {
+        "reference": "DEB",
+        "predicted": "BACK",
+        "count": 1
+      },
+      {
+        "reference": "MUC",
+        "predicted": "TUM",
+        "count": 1
+      },
+      {
+        "reference": "NORM",
+        "predicted": "LYM",
+        "count": 1
+      },
+      {
+        "reference": "NORM",
+        "predicted": "TUM",
+        "count": 1
+      },
+      {
+        "reference": "TUM",
+        "predicted": "BACK",
+        "count": 1
+      },
+      {
+        "reference": "TUM",
+        "predicted": "MUS",
+        "count": 1
+      },
+      {
+        "reference": "TUM",
+        "predicted": "ADI",
+        "count": 1
+      }
+    ],
+    "review_heuristic_counts": {
+      "unflagged_correct": 6607,
+      "flagged_correct": 296,
+      "unflagged_incorrect": 163,
+      "flagged_incorrect": 114
+    },
+    "review_heuristic_utility": {
+      "fraction_flagged": 0.057103064066852366,
+      "fraction_errors_flagged": 0.41155234657039713,
+      "error_rate_flagged": 0.2780487804878049,
+      "error_rate_unflagged": 0.024076809453471196,
+      "high_score_incorrect_ge_0_8": 163,
+      "high_score_incorrect_ge_0_95": 114,
+      "thresholds_frozen": true,
+      "calibrated": false
+    }
+  },
+  "prediction_parity": {
+    "compared_images": 7180,
+    "compared_scores": 64620,
+    "labels_identical": true,
+    "max_score_absolute_difference": 0.0,
+    "absolute_tolerance": 2e-05,
+    "relative_tolerance": 0.0001
+  },
+  "model_training": false,
+  "reference_labels_in_collection": false
+}

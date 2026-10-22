@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Search images · Tissology</title>
+  <link rel="stylesheet" href="static/style.css?v=15">
+  <link rel="stylesheet" href="static/presentation.css?v=10">
+  <link rel="stylesheet" href="static/semantic.css?v=17">
+  <link rel="stylesheet" href="static/region-selector.css?v=2">
+</head>
+<body class="semantic-workspace">
+<header class="app-header"><div class="header-inner">
+  <a class="brand" href="./?step=home">Tissology</a>
+  <nav class="workspace-navigation" aria-label="Workspace navigation"><a href="research?step=home">Tissue studies</a><a href="collections" data-feature-link="collections" hidden>Scan collection</a><a href="semantic" aria-current="page">Search images</a></nav>
+</div></header>
+<main class="semantic-main">
+  <div class="semantic-heading">
+    <div><p class="collection-kicker" id="semantic-collection-name">Colorectal image library</p><h1 id="semantic-title">Search images</h1></div>
+    <nav class="semantic-tabs" aria-label="Workspace">
+      <a id="semantic-collection-back" hidden>Images</a>
+      <button id="find-tab" type="button" aria-pressed="true">Search images</button>
+      <button id="describe-tab" type="button" aria-pressed="false">Findings</button>
+    </nav>
+  </div>
+  <p id="semantic-scope" class="scope-note">4,500 colorectal development images</p>
+  <div id="semantic-error" role="alert" hidden></div>
+  <div id="semantic-message" role="status" aria-live="polite"></div>
+  <section id="find-panel" aria-label="Search the colorectal image library">
+    <div class="search-entry">
+    <section id="image-query" class="image-query" aria-label="Image used for this search" hidden>
+      <img id="image-query-picture" alt="">
+      <div class="image-query-description"><p class="collection-kicker" id="image-query-kicker">Find similar</p><strong id="image-query-name"></strong><p id="image-query-note">This image starts the search. It is not a review or selected evidence.</p><details id="region-query-context" class="region-query-context" hidden><summary>Source image and pixel bounds</summary><p id="region-query-bounds"></p><img id="region-query-source-picture" alt=""><button id="region-query-source" type="button">Inspect source image</button></details></div>
+      <div class="actions image-query-actions"><button id="retry-image-query" type="button" hidden>Retry source image</button><button id="use-region-query" type="button" hidden>Use region in a finding</button><button id="clear-image-query" type="button">Switch to text search</button></div>
+    </section>
+    <form id="search-form" class="search-composer">
+      <div class="query-field"><label id="search-text-label" for="search-text">Describe what you want to see</label><textarea id="search-text" rows="1" maxlength="600" required aria-describedby="search-limit-note" placeholder="Try a tissue name, color, shape, or texture…"></textarea></div>
+      <button class="primary" id="search-button" type="submit" disabled>Search images</button>
+    </form>
+    <p id="search-limit-note" class="search-limit-note">Use a tissue name or describe its appearance. Refine suggested matches with examples.</p>
+    <details id="search-starters" class="search-starters" aria-label="Example searches" open hidden>
+      <summary>Try an example</summary>
+      <p id="search-starters-hint">Each example adds an editable tissue name to the search.</p>
+      <div id="search-starter-buttons" class="search-starter-buttons"></div>
+    </details>
+    <div class="search-toolbar">
+      <div class="search-tools"><button id="browse-examples" type="button" disabled>Browse examples</button><button id="guide-toggle" type="button" aria-controls="guide-panel" aria-expanded="false" hidden>Guide this search</button></div>
+      <details class="query-options"><summary>Search options</summary><div class="query-options-content"><button id="add-microscopy-context" type="button">Add microscopy context</button><p class="scope-note">Adds an editable phrase. It does not guarantee better matches.</p></div></details>
+    </div>
+    </div>
+    <div id="search-workspace" class="search-workspace">
+      <div class="search-canvas">
+        <div id="selection-toolbar" class="selection-toolbar" hidden>
+          <div class="selection-feedback">
+            <p class="scope-note" id="example-feedback" hidden>Mark images Relevant or Not a match, then refine.</p>
+            <div class="actions"><button id="refine-button" class="primary" type="button" disabled hidden>Refine with examples</button><button id="clear-examples" type="button" hidden>Clear examples</button></div>
+            <details id="chosen-examples-panel" hidden><summary>Selected examples</summary><div id="chosen-examples" class="chosen-examples"></div></details>
+          </div>
+          <div id="search-evidence-panel" hidden><div class="search-evidence-heading"><p id="search-evidence-count" class="scope-note"></p><button id="go-description" type="button" hidden>Write with selected evidence</button></div><div id="search-evidence" class="evidence-strip" aria-label="Images selected for your finding"></div></div>
+        </div>
+        <section id="search-interpretation" class="interpretation-note" hidden></section>
+        <p id="results-stale" class="scope-note" hidden>These results are from your previous search. Search again or refine to use the current words and examples.</p>
+        <p id="search-summary" aria-live="polite"></p>
+        <p id="search-query" class="scope-note" hidden></p>
+        <div id="search-notices"></div>
+        <details id="gallery-panel" open hidden>
+          <summary id="browse-gallery">Browse images</summary>
+          <p class="gallery-intro">A varied sample from the library. Search above to see suggested matches.</p>
+          <p id="gallery-message" role="status">Loading image examples…</p>
+          <div id="gallery-results" class="semantic-grid"></div><button id="gallery-more" type="button" hidden>Show 20 more patterns</button>
+        </details>
+        <div id="search-results" class="semantic-grid"></div>
+        <div class="search-context-details">
+          <details class="semantic-details" id="search-details" hidden><summary>Search method &amp; provenance</summary><p id="score-description"></p><ul id="search-more-notices"></ul><pre id="search-provenance"></pre></details>
+          <details id="semantic-quality" class="semantic-details" hidden>
+            <summary id="quality-heading">Tested search quality</summary><div id="quality-summary"></div><p id="quality-scope"></p><p id="quality-reference"></p>
+            <p id="quality-review-scope">Benchmark reviews are simulated from development labels. These results do not establish expert-review quality, human time savings or spatial understanding.</p><div id="quality-primary" class="quality-table"></div>
+            <details><summary>Every tested query, including regressions</summary><div id="quality-queries" class="quality-table"></div></details>
+            <details><summary>All review budgets and frozen evidence</summary><div id="quality-all" class="quality-table"></div><p id="quality-source"></p><p id="quality-provenance" class="quality-provenance"></p></details>
+          </details>
+          <details id="search-library" class="semantic-details">
+            <summary>Save or reopen a search</summary><p>Save your query and example choices. This does not validate a finding or change a study.</p>
+            <form id="concept-form"><label for="concept-name">Name</label><input id="concept-name" required maxlength="100" placeholder="A name you will recognize"><label for="concept-reviewer">Reviewer / source</label><input id="concept-reviewer" required maxlength="100" autocomplete="name"><label for="concept-note">What makes a useful match?</label><textarea id="concept-note" rows="2" maxlength="2000"></textarea><button id="save-concept" type="submit" disabled>Save named search</button></form><div id="saved-concepts"></div>
+          </details>
+        </div>
+      </div>
+      <details id="guide-panel" class="workspace-guide" hidden>
+        <summary>Guide this search <span id="guide-applied-indicator">· optional</span></summary>
+        <button id="guide-close" class="guide-close" type="button" aria-label="Close search guidance">Close</button>
+        <p class="guide-intro">Define your goal, choose examples, then apply. Your images stay alongside this panel.</p>
+        <div id="guide-status" role="status"></div>
+        <label for="guide-goal">Your goal</label><textarea id="guide-goal" maxlength="300" rows="2" placeholder="What are you trying to find?"></textarea>
+        <details class="guidance-criteria"><summary>Appearance &amp; exclusions</summary><label for="guide-inclusion">Useful images should show</label><textarea id="guide-inclusion" maxlength="280" rows="2"></textarea><label for="guide-exclusions">Avoid</label><textarea id="guide-exclusions" maxlength="600" rows="2"></textarea><p id="guide-exclusion-note" class="scope-note">Use Not a match images to exclude a pattern. Written exclusions are saved as notes, not guaranteed filters.</p></details>
+        <div class="guidance-examples"><h3>Teach with examples</h3><p id="guide-examples">No image examples attached.</p><button id="guide-copy-examples" type="button">Use my selected examples</button><div id="guide-example-preview" class="guide-example-preview" aria-label="Examples attached to this guidance"></div></div>
+        <details class="guidance-options"><summary>Researcher, notes &amp; reuse</summary><label for="guide-reviewer">Researcher / team</label><input id="guide-reviewer" maxlength="100"><label for="guide-note">Notes about your intended use</label><textarea id="guide-note" maxlength="2000" rows="2"></textarea><label for="guide-scope">Use this guidance for</label><select id="guide-scope"><option value="current_task">This task</option><option value="saved_definition">A saved reusable definition</option></select></details>
+        <p id="guide-preview" class="scope-note"></p>
+        <p class="scope-note guide-scope">Changes this search ranking only. Foundation models, tissue labels and study predictions stay unchanged.</p>
+        <div class="actions guide-actions"><button id="guide-apply" class="primary" type="button">Apply and search</button><button id="guide-save" type="button">Save without applying</button><button id="guide-stop" type="button" disabled>Stop using guidance</button></div>
+        <details class="saved-guidance"><summary>Saved guidance &amp; versions</summary><div class="actions"><button id="guide-new" type="button">New guidance</button><button id="guide-retract" type="button" disabled>Retract this guidance</button></div><div id="guide-saved"></div></details>
+        <details><summary>Advanced: tissue classifier</summary><p>Separate development-label review and candidate testing. This does not change this search or existing study.</p><a id="guide-classifier-link" href="feedback" hidden>Open colorectal classifier correction</a></details>
+      </details>
+    </div>
+  </section>
+  <section id="describe-panel" aria-labelledby="describe-heading" hidden>
+    <div class="editor-heading"><div><h2 id="describe-heading">Write a finding</h2><p>Describe what you observe, then attach the images that support your assessment.</p></div><button id="editor-find-images" type="button">Find more images</button></div>
+    <div class="description-workspace">
+      <div class="description-draft">
+        <label for="description-text">Your description</label><textarea id="description-text" rows="5" maxlength="6000" placeholder="Describe the visible appearance of the tissue…"></textarea>
+        <div class="actions"><button id="search-description" type="button">Search selected words</button><button id="add-claim" type="button">Add a claim to review</button></div><p class="scope-note editor-hint">Select a phrase, or use the whole draft. Your wording is preserved when you search.</p>
+        <div class="claims-heading"><h3>Claims &amp; assessments</h3><span id="claim-count" class="scope-note">No claims yet</span></div><p id="claims-empty" class="scope-note">Add a claim from your draft, then attach the images that help you assess it.</p><div id="claims"></div>
+        <form id="description-form"><label for="description-reviewer">Reviewer / source</label><input id="description-reviewer" required maxlength="100" autocomplete="name"><div class="actions"><button class="primary" id="save-description" type="submit" disabled>Save description and evidence</button><a id="description-export" hidden>Download saved record</a></div><p id="description-version">Saving preserves your wording, image evidence and judgments as a new version.</p></form>
+        <details class="semantic-details"><summary>Saved descriptions</summary><div id="saved-descriptions"></div></details>
+      </div>
+      <aside class="description-evidence" aria-labelledby="evidence-heading"><h3 id="evidence-heading">Selected image evidence</h3><p id="evidence-count">Choose images in Search images, then attach them to a claim.</p><div id="selected-evidence" class="evidence-strip"></div><p class="scope-note evidence-caution">Search matches do not prove a claim. Assessments are recorded by the reviewer; the software does not independently verify them.</p></aside>
+    </div>
+  </section>
+  <details class="semantic-details library-scope"><summary>About this image library</summary><p id="semantic-library-scope">4,500 colorectal development images, separate from the breast tissue study. Search compares whole-image appearance; it does not establish spatial measurements.</p></details>
+  <footer class="semantic-footer">Colorectal image exploration · No verified spatial relations, cell counts or diagnoses</footer>
+</main>
+<dialog id="semantic-image-dialog" aria-labelledby="semantic-image-heading">
+  <div class="semantic-image-heading"><div><p class="scope-note">Image inspection</p><h2 id="semantic-image-heading">Inspect image</h2></div><button id="semantic-image-close" type="button" autofocus>Close</button></div>
+  <img id="semantic-image-picture" alt="">
+  <p id="semantic-image-load" class="scope-note" role="status"></p>
+  <div id="semantic-region-tools" hidden></div>
+  <div class="semantic-image-actions"><button id="semantic-image-relevant" type="button" aria-pressed="false">Relevant</button><button id="semantic-image-negative" type="button" aria-pressed="false">Not a match</button><button id="semantic-image-evidence" type="button" aria-pressed="false">Select as evidence</button></div>
+  <button id="semantic-image-similar" type="button" hidden>Find similar</button>
+  <p id="semantic-image-status" class="scope-note" role="status" aria-live="polite"></p>
+  <details class="semantic-image-record"><summary>Image identity</summary><p id="semantic-image-id"></p></details>
+</dialog>
+<script src="static/lab-session.js?v=2"></script><script src="static/region-selector.js?v=2"></script><script src="static/semantic.js?v=23"></script>
+<script src="static/guidance.js?v=6"></script>
+<script src="static/navigation.js?v=13"></script>
+</body>
+</html>
