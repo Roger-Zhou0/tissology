@@ -1,0 +1,12 @@
+# Optional privately provisioned breast study with cached segmentation results.
+# Mount at its recorded source root to preserve frozen artifact paths and hashes.
+services:
+  studio:
+    environment:
+      TISSUE_RESEARCH_DIR: ${TISSUE_EXAMPLES_MOUNT:?Set the recorded source root}/spatial-research-001
+    volumes:
+      - type: bind
+        source: ${TISSUE_EXAMPLES_DIR:?Set the private prepared-study directory}
+        target: ${TISSUE_EXAMPLES_MOUNT:?Set the recorded source root}
+        bind:
+          create_host_path: false
