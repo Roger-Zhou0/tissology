@@ -116,7 +116,8 @@ def create_app(directory=None, spatial_directory=None, research_directory=None, 
     app.state.collections = collections
     from .workspace_catalog import register_workspace
     register_workspace(app, collections=collections_directory, semantic=semantic_directory,
-                       research=research_directory)
+                       research=research_directory,
+                       collection_encoder=getattr(collection_text_encoder, "directory", None))
 
     @app.exception_handler(ValueError)
     async def value_error(request, error):

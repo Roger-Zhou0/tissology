@@ -112,9 +112,11 @@ class Reader:
 
 
 class WorkspaceCatalog:
-    def __init__(self, collections=None, semantic=None, research=None, *, max_entries=MAX_ENTRIES, max_bytes=MAX_READ_BYTES):
+    def __init__(self, collections=None, semantic=None, research=None, *, collection_encoder=None,
+                 max_entries=MAX_ENTRIES, max_bytes=MAX_READ_BYTES):
         self.roots = {key: Path(value).resolve() if value else None for key, value in
-                      (("collections", collections), ("semantic", semantic), ("research", research))}
+                      (("collections", collections), ("semantic", semantic), ("research", research),
+                       ("collection_encoder", collection_encoder if collection_encoder is not None else semantic))}
         self.max_entries, self.max_bytes = max_entries, max_bytes
 
     def listing(self, *, q="", kind="all", offset=0, limit=12, include_examples=False):
@@ -297,7 +299,7 @@ class WorkspaceCatalog:
                         manifest = reader.read(directory / "manifest.json", collections)
                         predictions = reader.read(directory / "predictions.json", collections)
                         scan = reader.read(directory / "scan.json", collections, sealed=False)
-                        encoder_root = self.roots["semantic"]
+                        encoder_root = self.roots["collection_encoder"]
                         if encoder_root is None:
                             raise ValueError("Search encoder metadata is unavailable")
                         encoder = reader.read(encoder_root / "encoder.json", encoder_root)
@@ -408,8 +410,8 @@ class WorkspaceCatalog:
                 "verification_scope": "Saved metadata and source bindings. Images, model weights and feature arrays are checked when opening the record; none are loaded by this catalog."}
 
 
-def register_workspace(app, *, collections=None, semantic=None, research=None):
-    catalog = WorkspaceCatalog(collections, semantic, research)
+def register_workspace(app, *, collections=None, semantic=None, research=None, collection_encoder=None):
+    catalog = WorkspaceCatalog(collections, semantic, research, collection_encoder=collection_encoder)
 
     @app.get("/api/workspace")
     def saved_work(q: str = Query(default="", max_length=500),
