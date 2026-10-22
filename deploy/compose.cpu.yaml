@@ -1,0 +1,17 @@
+# Run from the repository root with compose.yaml as the first file.
+# The bundle must be exported privately by an approved model user.
+services:
+  studio:
+    build:
+      target: cpu-inference
+    environment:
+      TISSUE_MODEL_BUNDLE: /models
+      TISSUE_PUBLIC_ORIGIN: ${TISSUE_PUBLIC_ORIGIN:?Set the browser-facing origin, including https://}
+      TISSUE_CPU_THREADS: "2"
+    volumes:
+      - type: bind
+        source: ${TISSUE_MODEL_BUNDLE_DIR:?Set the absolute path to the private model bundle}
+        target: /models
+        read_only: true
+        bind:
+          create_host_path: false

@@ -11,10 +11,25 @@ jobs:
   container:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [workspace, cpu-inference]
     steps:
       - uses: actions/checkout@v4
-      - name: Build CPU workspace
-        run: docker build --target workspace -t tissology:test .
+      - name: Build container
+        run: docker build --target "${{ matrix.target }}" -t tissology:test .
+      - name: Check CPU inference dependencies
+        if: matrix.target == 'cpu-inference'
+        run: |
+          docker run --rm --entrypoint python tissology:test -c \
+            'import torch, torchvision, transformers, timm, ftfy, einops; assert torch.version.cuda is None; assert not torch.cuda.is_available(); print("CPU inference dependencies loaded")'
+      - name: Check private model mount configuration
+        run: |
+          TISSUE_ACCESS_PASSWORD=configuration-check-only \
+          TISSUE_PUBLIC_ORIGIN=https://example.invalid \
+          TISSUE_MODEL_BUNDLE_DIR=/tmp/private-models \
+            docker compose -f compose.yaml -f deploy/compose.cpu.yaml config --quiet
       - name: Check startup and read-only protection
         shell: bash
         run: |
