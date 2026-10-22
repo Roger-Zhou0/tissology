@@ -8,6 +8,7 @@ services:
       TISSUE_MODEL_BUNDLE: /models
       TISSUE_PUBLIC_ORIGIN: ${TISSUE_PUBLIC_ORIGIN:?Set the browser-facing origin, including https://}
       TISSUE_CPU_THREADS: "2"
+      TISSUE_SCAN_TIMEOUT_SECONDS: ${TISSUE_SCAN_TIMEOUT_SECONDS:-7200}
     volumes:
       - type: bind
         source: ${TISSUE_MODEL_BUNDLE_DIR:?Set the absolute path to the private model bundle}
