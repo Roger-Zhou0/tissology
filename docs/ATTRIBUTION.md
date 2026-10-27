@@ -9,3 +9,7 @@ Selection: the first four TIFF filenames alphabetically within each of the nine 
 Reference labels come from dataset folders. No per-image CONCH predictions or confidence scores are provided or inferred. The separate benchmark page reproduces the repository's archived aggregate evaluation; it does not evaluate this selected sample.
 
 Similarity ranking uses RGB histograms and horizontal intensity differences calculated in the visitor's browser. It is a lightweight appearance comparison, not a neural embedding, semantic search, or tissue classification.
+
+## Optional browser model
+
+TIA Centre MobileNetV3-Small / Kather100K weights are adapted to ONNX under CC BY 4.0. ONNX Runtime Web 1.20.1 is included under MIT with third-party notices. Model source, modifications, checksums, citations, and numerical checks are in [models/README.md](models/README.md). Predictions from this optional model are separate from the dataset labels and CONCH evaluation.
