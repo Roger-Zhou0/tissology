@@ -1,13 +1,9 @@
-# Publishing Tissology's public preview
+# Tissology public workspace
 
-This package is ready for an isolated static deployment. It has **not** been pushed or activated in GitHub Pages.
+The public demo is hosted at https://roger-zhou0.github.io/tissology/ through GitHub Pages, using the `main` branch's `/docs` directory. Changes publish after merging into `main` and a successful Pages deployment.
 
-1. In your **Roger-Zhou0/tissology** repository, commit the `docs/` folder from this package to the default branch. Keep the original application, data, access controls, and deployment configuration unchanged.
-2. In repository **Settings → Pages**, choose **Deploy from a branch → main → /docs → Save**.
-3. After GitHub confirms successful publication, visit `https://roger-zhou0.github.io/tissology/` in an incognito browser and verify that no sign-in is requested.
-4. Check the Network tab: no calls should go to the original Tissology server or to external services. The static files originate from GitHub Pages only.
-5. Link **that URL** from the Tissology project entry on your resume—not the existing private workspace.
+The site consists of static HTML, CSS, JavaScript, and an archived aggregate benchmark JSON. Filtering, analysis, annotations, and export run in the visitor's browser. There are no requests to the Tissology research server, model inference, private collections, or paid API calls. GitHub Pages serves the files under its hosting limits.
 
-If you prefer not to use Pages, any static-file host works. Avoid enabling `TISSUE_PUBLIC_READONLY=1` on the existing live server solely for this demo: the underlying GET endpoints are not guaranteed to be computationally free or safe to expose to anonymous users.
+After deployment, check the public URL and the Pages workflow. Verify that class selection, matrix selection, error inspection, finding creation, and JSON export work. Browser session notes are not persisted; export them before closing or reloading.
 
-Important: The preview uses no real tissue images. It is an interactive **research showcase**, not a fully functional public deployment of the model. You would need a public, appropriately licensed, precomputed image sample to demonstrate actual image inspection without live inference.
+Individual tissue images are not included. Adding image-level review later requires a public, appropriately licensed sample set and precomputed outputs. Keep the original research application's authentication and server deployment unchanged.
