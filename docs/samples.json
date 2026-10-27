@@ -1,0 +1,375 @@
+{
+  "dataset": "CRC-VAL-HE-7K",
+  "source": "https://zenodo.org/records/1214456",
+  "doi": "10.5281/zenodo.1214456",
+  "license": "CC-BY-4.0",
+  "authors": [
+    "Jakob Nikolas Kather",
+    "Niels Halama",
+    "Alexander Marx"
+  ],
+  "selection": "First four filenames alphabetically in each of nine classes; illustrative subset, not a representative evaluation sample.",
+  "modifications": "TIFF images converted losslessly to PNG; original resolution and pixels retained.",
+  "images": [
+    {
+      "id": "ADI-TCGA-AAICEQFN",
+      "filename": "ADI-TCGA-AAICEQFN.tif",
+      "label": "ADI",
+      "src": "samples/ADI-TCGA-AAICEQFN.png",
+      "source_path": "CRC-VAL-HE-7K/ADI/ADI-TCGA-AAICEQFN.tif",
+      "source_sha256": "5ad67dd043bd6f5d5bb9b73db3d66990770c1934c930734d0bcfc5331f418675",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "ADI-TCGA-AAKTCYHC",
+      "filename": "ADI-TCGA-AAKTCYHC.tif",
+      "label": "ADI",
+      "src": "samples/ADI-TCGA-AAKTCYHC.png",
+      "source_path": "CRC-VAL-HE-7K/ADI/ADI-TCGA-AAKTCYHC.tif",
+      "source_sha256": "da42ddde81b9d9c1b8ccb5cd18b11c1333149d568c6347c4906d9ed545c8beaa",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "ADI-TCGA-AAWDNKDK",
+      "filename": "ADI-TCGA-AAWDNKDK.tif",
+      "label": "ADI",
+      "src": "samples/ADI-TCGA-AAWDNKDK.png",
+      "source_path": "CRC-VAL-HE-7K/ADI/ADI-TCGA-AAWDNKDK.tif",
+      "source_sha256": "723bc476e9e16f422fb3a4d46a183ec4532bed5434f275301e705236f3ba69fb",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "ADI-TCGA-ACCKVFLM",
+      "filename": "ADI-TCGA-ACCKVFLM.tif",
+      "label": "ADI",
+      "src": "samples/ADI-TCGA-ACCKVFLM.png",
+      "source_path": "CRC-VAL-HE-7K/ADI/ADI-TCGA-ACCKVFLM.tif",
+      "source_sha256": "5fc7ddc73433112e9bf7e88fe3f725ba7294c55136c308af0dabf2d0a8f8dfdf",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "BACK-TCGA-AARRNSTS",
+      "filename": "BACK-TCGA-AARRNSTS.tif",
+      "label": "BACK",
+      "src": "samples/BACK-TCGA-AARRNSTS.png",
+      "source_path": "CRC-VAL-HE-7K/BACK/BACK-TCGA-AARRNSTS.tif",
+      "source_sha256": "8d86bde5b457f48ca194b2a05a67b0cdc510e8660ac39dd6eaec008b324b991a",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "BACK-TCGA-ACTQDGTI",
+      "filename": "BACK-TCGA-ACTQDGTI.tif",
+      "label": "BACK",
+      "src": "samples/BACK-TCGA-ACTQDGTI.png",
+      "source_path": "CRC-VAL-HE-7K/BACK/BACK-TCGA-ACTQDGTI.tif",
+      "source_sha256": "89197696f9ee963a6f4b4e9ff87c5e513131cb3b9e6eea8b6626f771590d40f2",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "BACK-TCGA-ADCKFEPV",
+      "filename": "BACK-TCGA-ADCKFEPV.tif",
+      "label": "BACK",
+      "src": "samples/BACK-TCGA-ADCKFEPV.png",
+      "source_path": "CRC-VAL-HE-7K/BACK/BACK-TCGA-ADCKFEPV.tif",
+      "source_sha256": "f6ec109ebc2b32c843ac9b27cd43e5120b2ef266579dbc72631f8a23b05d311d",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "BACK-TCGA-ADESWYYD",
+      "filename": "BACK-TCGA-ADESWYYD.tif",
+      "label": "BACK",
+      "src": "samples/BACK-TCGA-ADESWYYD.png",
+      "source_path": "CRC-VAL-HE-7K/BACK/BACK-TCGA-ADESWYYD.tif",
+      "source_sha256": "e66ac5ee13e2d7c4dcdfbdb02e430cdbc7edb4d81f33b7ffdf84a9276cea2394",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "DEB-TCGA-AANNAWLE",
+      "filename": "DEB-TCGA-AANNAWLE.tif",
+      "label": "DEB",
+      "src": "samples/DEB-TCGA-AANNAWLE.png",
+      "source_path": "CRC-VAL-HE-7K/DEB/DEB-TCGA-AANNAWLE.tif",
+      "source_sha256": "6832a5db333b5d28f808fa972959fd664acb6b74b0453deb7b48bd9a1a7b30e0",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "DEB-TCGA-ACMSDEFF",
+      "filename": "DEB-TCGA-ACMSDEFF.tif",
+      "label": "DEB",
+      "src": "samples/DEB-TCGA-ACMSDEFF.png",
+      "source_path": "CRC-VAL-HE-7K/DEB/DEB-TCGA-ACMSDEFF.tif",
+      "source_sha256": "2755d5e658b22e9d8f334c3424235d9349abc454ee7668dbaa0a278192b2e927",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "DEB-TCGA-ACQQYLLS",
+      "filename": "DEB-TCGA-ACQQYLLS.tif",
+      "label": "DEB",
+      "src": "samples/DEB-TCGA-ACQQYLLS.png",
+      "source_path": "CRC-VAL-HE-7K/DEB/DEB-TCGA-ACQQYLLS.tif",
+      "source_sha256": "522a894c2f53d29e8403b0c55399c3d81ec22ebad318f8243bf902c703b60a20",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "DEB-TCGA-ADCHTGEE",
+      "filename": "DEB-TCGA-ADCHTGEE.tif",
+      "label": "DEB",
+      "src": "samples/DEB-TCGA-ADCHTGEE.png",
+      "source_path": "CRC-VAL-HE-7K/DEB/DEB-TCGA-ADCHTGEE.tif",
+      "source_sha256": "a6c88ae4ef7df927bf3411743200cc43afe125b2d05ea1882e9e703dc3883942",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "LYM-TCGA-AAWGSCHH",
+      "filename": "LYM-TCGA-AAWGSCHH.tif",
+      "label": "LYM",
+      "src": "samples/LYM-TCGA-AAWGSCHH.png",
+      "source_path": "CRC-VAL-HE-7K/LYM/LYM-TCGA-AAWGSCHH.tif",
+      "source_sha256": "e082c7fa7696aacd0ec56036c208b23cd1c7523ae061d3c577175e66976c14d2",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "LYM-TCGA-AFIDYMYA",
+      "filename": "LYM-TCGA-AFIDYMYA.tif",
+      "label": "LYM",
+      "src": "samples/LYM-TCGA-AFIDYMYA.png",
+      "source_path": "CRC-VAL-HE-7K/LYM/LYM-TCGA-AFIDYMYA.tif",
+      "source_sha256": "d3a61032d5468bae3bc6295da41bd717e9b7ef73fc9b3a306cec58806be4ae0a",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "LYM-TCGA-AFILHSCE",
+      "filename": "LYM-TCGA-AFILHSCE.tif",
+      "label": "LYM",
+      "src": "samples/LYM-TCGA-AFILHSCE.png",
+      "source_path": "CRC-VAL-HE-7K/LYM/LYM-TCGA-AFILHSCE.tif",
+      "source_sha256": "91fe7925657497834a0f56190f41736171fe865dc1d0638cb0563a36e8a99ab2",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "LYM-TCGA-AGDQANVL",
+      "filename": "LYM-TCGA-AGDQANVL.tif",
+      "label": "LYM",
+      "src": "samples/LYM-TCGA-AGDQANVL.png",
+      "source_path": "CRC-VAL-HE-7K/LYM/LYM-TCGA-AGDQANVL.tif",
+      "source_sha256": "d46183f9587c4e9c9077f29507ae9a0a367d9eefe4eb25c41a63e6ccb09f4cfc",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "MUC-TCGA-AADHFQAT",
+      "filename": "MUC-TCGA-AADHFQAT.tif",
+      "label": "MUC",
+      "src": "samples/MUC-TCGA-AADHFQAT.png",
+      "source_path": "CRC-VAL-HE-7K/MUC/MUC-TCGA-AADHFQAT.tif",
+      "source_sha256": "99b71a2f0b218013290c14b9c6cd83d8eaaab8a1f66366e36380f6478faf6dc9",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "MUC-TCGA-ACCPKIPN",
+      "filename": "MUC-TCGA-ACCPKIPN.tif",
+      "label": "MUC",
+      "src": "samples/MUC-TCGA-ACCPKIPN.png",
+      "source_path": "CRC-VAL-HE-7K/MUC/MUC-TCGA-ACCPKIPN.tif",
+      "source_sha256": "d8d4cf19065f3581f9ed8a219c70cfa3dea7e819248edef3342dd2331a555d1f",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "MUC-TCGA-ACNVECVS",
+      "filename": "MUC-TCGA-ACNVECVS.tif",
+      "label": "MUC",
+      "src": "samples/MUC-TCGA-ACNVECVS.png",
+      "source_path": "CRC-VAL-HE-7K/MUC/MUC-TCGA-ACNVECVS.tif",
+      "source_sha256": "5eef75e01b592d56c0d8adccad602de8f8079ec3d6e78efae9386980702ff439",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "MUC-TCGA-AECPAGVM",
+      "filename": "MUC-TCGA-AECPAGVM.tif",
+      "label": "MUC",
+      "src": "samples/MUC-TCGA-AECPAGVM.png",
+      "source_path": "CRC-VAL-HE-7K/MUC/MUC-TCGA-AECPAGVM.tif",
+      "source_sha256": "df6419d8cbefc3beb5b8c7af4834de7ae38e6713c261fef5e977bd7e6abea542",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "MUS-TCGA-AASRLCCT",
+      "filename": "MUS-TCGA-AASRLCCT.tif",
+      "label": "MUS",
+      "src": "samples/MUS-TCGA-AASRLCCT.png",
+      "source_path": "CRC-VAL-HE-7K/MUS/MUS-TCGA-AASRLCCT.tif",
+      "source_sha256": "3cd47b2117cf39423a0d8c6575a43b294c6a3b5d3fdac921214135d38c365b48",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "MUS-TCGA-ACNCSHKV",
+      "filename": "MUS-TCGA-ACNCSHKV.tif",
+      "label": "MUS",
+      "src": "samples/MUS-TCGA-ACNCSHKV.png",
+      "source_path": "CRC-VAL-HE-7K/MUS/MUS-TCGA-ACNCSHKV.tif",
+      "source_sha256": "e1f2696550ef84da3f617147530f88ecfc2e05fc35efddd711cb30e98999eb83",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "MUS-TCGA-ADRNTPGI",
+      "filename": "MUS-TCGA-ADRNTPGI.tif",
+      "label": "MUS",
+      "src": "samples/MUS-TCGA-ADRNTPGI.png",
+      "source_path": "CRC-VAL-HE-7K/MUS/MUS-TCGA-ADRNTPGI.tif",
+      "source_sha256": "3dc6235122768c064662aeff0d14c988d3626908c933dcadbf88ccb570bcc20d",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "MUS-TCGA-AESPLIAR",
+      "filename": "MUS-TCGA-AESPLIAR.tif",
+      "label": "MUS",
+      "src": "samples/MUS-TCGA-AESPLIAR.png",
+      "source_path": "CRC-VAL-HE-7K/MUS/MUS-TCGA-AESPLIAR.tif",
+      "source_sha256": "23b0dc971783f3eef235e7d18ef06379941c4322a468f88a3ba18dad1bba928a",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "NORM-TCGA-AASSYQPA",
+      "filename": "NORM-TCGA-AASSYQPA.tif",
+      "label": "NORM",
+      "src": "samples/NORM-TCGA-AASSYQPA.png",
+      "source_path": "CRC-VAL-HE-7K/NORM/NORM-TCGA-AASSYQPA.tif",
+      "source_sha256": "07ea23ef6190f1b4f4cfd54479f4fe2abe5c65f3d24d931cbbf5f457aeaf3bf2",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "NORM-TCGA-ACCEDPAW",
+      "filename": "NORM-TCGA-ACCEDPAW.tif",
+      "label": "NORM",
+      "src": "samples/NORM-TCGA-ACCEDPAW.png",
+      "source_path": "CRC-VAL-HE-7K/NORM/NORM-TCGA-ACCEDPAW.tif",
+      "source_sha256": "638425cb0913d6efbb0f2339fd08408ae14f97e9cc779e2acde1d9bdfc0b1c03",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "NORM-TCGA-ACEQSEEM",
+      "filename": "NORM-TCGA-ACEQSEEM.tif",
+      "label": "NORM",
+      "src": "samples/NORM-TCGA-ACEQSEEM.png",
+      "source_path": "CRC-VAL-HE-7K/NORM/NORM-TCGA-ACEQSEEM.tif",
+      "source_sha256": "f46a9252aeb4b73c69ab1acc1d06044b892232cc8fa86ee411a179713d107799",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "NORM-TCGA-ADFIIYIC",
+      "filename": "NORM-TCGA-ADFIIYIC.tif",
+      "label": "NORM",
+      "src": "samples/NORM-TCGA-ADFIIYIC.png",
+      "source_path": "CRC-VAL-HE-7K/NORM/NORM-TCGA-ADFIIYIC.tif",
+      "source_sha256": "21dad5127f8dfa7b311fc2d0de3bf1d6e5c64cae9aee9e4dc17a5d983ffca225",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "STR-TCGA-AAMALCER",
+      "filename": "STR-TCGA-AAMALCER.tif",
+      "label": "STR",
+      "src": "samples/STR-TCGA-AAMALCER.png",
+      "source_path": "CRC-VAL-HE-7K/STR/STR-TCGA-AAMALCER.tif",
+      "source_sha256": "a4af7a7c742629338d2c0426425b3d0297b8b492155ea3ef773d42bc530323a0",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "STR-TCGA-ADIHSKPL",
+      "filename": "STR-TCGA-ADIHSKPL.tif",
+      "label": "STR",
+      "src": "samples/STR-TCGA-ADIHSKPL.png",
+      "source_path": "CRC-VAL-HE-7K/STR/STR-TCGA-ADIHSKPL.tif",
+      "source_sha256": "a087e4a6461e83f2cc29ccf0f36e7ea75cbc6992764d108b41f914c578cd53be",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "STR-TCGA-ADQVPWCM",
+      "filename": "STR-TCGA-ADQVPWCM.tif",
+      "label": "STR",
+      "src": "samples/STR-TCGA-ADQVPWCM.png",
+      "source_path": "CRC-VAL-HE-7K/STR/STR-TCGA-ADQVPWCM.tif",
+      "source_sha256": "516481580eab3c29a30b7d57591e90d906a76291961c6599abed71ce952e348b",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "STR-TCGA-AEAPPDAK",
+      "filename": "STR-TCGA-AEAPPDAK.tif",
+      "label": "STR",
+      "src": "samples/STR-TCGA-AEAPPDAK.png",
+      "source_path": "CRC-VAL-HE-7K/STR/STR-TCGA-AEAPPDAK.tif",
+      "source_sha256": "d43cae66b2c998e18988b956ca5e78a4511cd4c6480cc359313f317343f43caa",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "TUM-TCGA-AAHIDTWA",
+      "filename": "TUM-TCGA-AAHIDTWA.tif",
+      "label": "TUM",
+      "src": "samples/TUM-TCGA-AAHIDTWA.png",
+      "source_path": "CRC-VAL-HE-7K/TUM/TUM-TCGA-AAHIDTWA.tif",
+      "source_sha256": "a1b7e0a14eeb19b43fd10f6faefb6f18c22564beea9a1ceee3f1746f064036af",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "TUM-TCGA-AAHMWWKY",
+      "filename": "TUM-TCGA-AAHMWWKY.tif",
+      "label": "TUM",
+      "src": "samples/TUM-TCGA-AAHMWWKY.png",
+      "source_path": "CRC-VAL-HE-7K/TUM/TUM-TCGA-AAHMWWKY.tif",
+      "source_sha256": "c671622162e68c1acfd2acda17729a9f68a0930d04ed75705bf416792cfbc926",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "TUM-TCGA-AAMWWECY",
+      "filename": "TUM-TCGA-AAMWWECY.tif",
+      "label": "TUM",
+      "src": "samples/TUM-TCGA-AAMWWECY.png",
+      "source_path": "CRC-VAL-HE-7K/TUM/TUM-TCGA-AAMWWECY.tif",
+      "source_sha256": "7aaddfe85687a0edc7bb18556c8e9ca4d5fa24262dead2864b16b0b6d0306aec",
+      "width": 224,
+      "height": 224
+    },
+    {
+      "id": "TUM-TCGA-ACLMLTMS",
+      "filename": "TUM-TCGA-ACLMLTMS.tif",
+      "label": "TUM",
+      "src": "samples/TUM-TCGA-ACLMLTMS.png",
+      "source_path": "CRC-VAL-HE-7K/TUM/TUM-TCGA-ACLMLTMS.tif",
+      "source_sha256": "03ddca5bdf66a07cf78ab1b135fd448a63c2bd3fdab7b15843d16c6626974d8b",
+      "width": 224,
+      "height": 224
+    }
+  ]
+}

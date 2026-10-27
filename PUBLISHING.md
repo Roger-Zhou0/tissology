@@ -1,9 +1,9 @@
-# Tissology public workspace
+# Tissology public image workspace
 
-The public demo is hosted at https://roger-zhou0.github.io/tissology/ through GitHub Pages, using the `main` branch's `/docs` directory. Changes publish after merging into `main` and a successful Pages deployment.
+Hosted at https://roger-zhou0.github.io/tissology/ through GitHub Pages, from `main /docs`. Merged changes publish through the Pages workflow.
 
-The site consists of static HTML, CSS, JavaScript, and an archived aggregate benchmark JSON. Filtering, analysis, annotations, and export run in the visitor's browser. There are no requests to the Tissology research server, model inference, private collections, or paid API calls. GitHub Pages serves the files under its hosting limits.
+The frontend adapts the original application styles. It includes 36 licensed public tissue tiles, browser-only image import, reference-label review, appearance similarity, findings, and standalone report export. See `docs/ATTRIBUTION.md` for image provenance and `docs/README.md` for supported functionality.
 
-After deployment, check the public URL and the Pages workflow. Verify that class selection, matrix selection, error inspection, finding creation, and JSON export work. Browser session notes are not persisted; export them before closing or reloading.
+GitHub Pages serves static files only. No calls go to the research server, model inference, private collections, analytics, or paid APIs. The visitor's browser performs lightweight image comparisons and keeps sample reviews/findings in localStorage. Imported images and their findings stay in memory for the current tab.
 
-Individual tissue images are not included. Adding image-level review later requires a public, appropriately licensed sample set and precomputed outputs. Keep the original research application's authentication and server deployment unchanged.
+Validate browsing, zoom, filtering, label correction, browser persistence, similarity, import, and export after changes. The archived model benchmark is separate at `evaluation.html`; sample reference labels must never be presented as model predictions.
