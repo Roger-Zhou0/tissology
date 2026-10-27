@@ -1,0 +1,53 @@
+{
+  "id": "tia-mobilenet-v3-small-kather-onnx-v1",
+  "name": "TIA MobileNetV3-Small \u00b7 Kather100K",
+  "source": "https://huggingface.co/TIACentre/TIAToolbox_pretrained_weights/resolve/ea909bdcce3aa409bf436c09b4495cca90a8e99b/mobilenet_v3_small-kather100k.pth",
+  "source_revision": "ea909bdcce3aa409bf436c09b4495cca90a8e99b",
+  "source_sha256": "d5ac6a7d63db2100f0a6ab2ea8669525b28616c629e208583ec7386c509a3bf5",
+  "sha256": "69720af65624bc87e429e17a6534ece852936b27c46efc9b252940cc872fc714",
+  "bytes": 3741332,
+  "labels": [
+    "BACK",
+    "NORM",
+    "DEB",
+    "TUM",
+    "ADI",
+    "MUC",
+    "MUS",
+    "STR",
+    "LYM"
+  ],
+  "license": "CC-BY-4.0",
+  "input": {
+    "name": "pixels",
+    "shape": [
+      1,
+      3,
+      224,
+      224
+    ],
+    "dtype": "float32",
+    "preprocessing": "RGB, resize square tiles to 224 x 224, channels-first, divide each channel by 255; no mean/std normalization"
+  },
+  "output": {
+    "name": "scores",
+    "shape": [
+      1,
+      9
+    ],
+    "meaning": "Softmax scores, not calibrated confidence"
+  },
+  "opset": 17,
+  "conversion": {
+    "torch": "2.6.0",
+    "torchvision": "0.21.0",
+    "onnx": "1.17.0",
+    "onnxruntime": "1.20.1"
+  },
+  "validation": {
+    "sample_count": 36,
+    "max_absolute_score_error": 3.4570693969726562e-06,
+    "top1_matches": 36,
+    "scope": "Numerical conversion check on the 36 bundled samples; not an independent accuracy evaluation."
+  }
+}
