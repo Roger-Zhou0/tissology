@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#f6f7f2">
+  <meta name="description" content="A lightweight public demo of Tissology's quantitative pathology research workflow, without live inference or sign-in.">
+  <title>Tissology — Public Research Preview</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-top"><div class="shell top-inner">
+    <a class="brand" href="#top"><span class="brand-mark">T</span><span>Tissology</span></a>
+    <nav aria-label="Primary navigation"><a href="#benchmark">Results</a><a href="#review">Interactive preview</a><a href="#limitations">About</a><a class="github-link" href="https://github.com/Roger-Zhou0/tissology" target="_blank" rel="noopener noreferrer">View source ↗</a></nav>
+  </div></header>
+  <main id="top">
+    <div class="intro-wrap"><section class="shell hero">
+      <div class="hero-copy">
+        <p class="kicker">TISSUE IMAGE ANALYSIS · PUBLIC PREVIEW</p>
+        <h1>Research workflows,<br><em>without the overhead.</em></h1>
+        <p class="hero-lede">Explore how Tissology organizes tissue classification, uncertainty, and researcher review. This public version runs entirely in the browser—no login, no model serving, and no access to private collections.</p>
+        <div class="hero-actions"><a href="#review" class="primary-btn">Explore the demo <span aria-hidden="true">↗</span></a><a href="#benchmark" class="secondary-btn">Examine the results</a></div>
+        <div class="trust-line"><span>● No GPU calls</span><span>● No uploads</span><span>● No account needed</span></div>
+      </div>
+      <div class="hero-window" aria-label="Illustrative image preview, not clinical imagery">
+        <div class="window-bar"><span class="dots"><i></i><i></i><i></i></span><span>PREVIEW / COLLECTION 01</span><span>STATIC</span></div>
+        <div class="hero-art" id="hero-art"></div>
+        <div class="window-bottom"><span class="window-dot"></span><div><strong>Interactive review</strong><small>Explore · Annotate · Export</small></div><span class="synth">ILLUSTRATIVE</span></div>
+      </div>
+    </section></div>
+    <div class="disclosure"><div class="shell"><strong>Research-only preview.</strong> The illustrations are synthetic, not tissue images. The evaluation figures are from recorded research experiments, not live model predictions or clinical validation.</div></div>
+    <section class="shell stats" id="benchmark" aria-label="Model evaluation summary">
+      <div class="stat"><span>Previously studied benchmark</span><strong>7,180</strong><small>colorectal image tiles</small></div>
+      <div class="stat"><span>Reference-label agreement</span><strong>96.17%</strong><small>6,905 / 7,180 correct</small></div>
+      <div class="stat"><span>Macro F1</span><strong>94.62%</strong><small>nine tissue categories</small></div>
+      <div class="stat"><span>Model family</span><strong class="stat-name">CONCH</strong><small>precomputed embeddings + classifier</small></div>
+    </section>
+    <section class="shell section" aria-labelledby="results-title">
+      <div class="section-heading"><div><span class="eyebrow">01 / EVALUATION</span><h2 id="results-title">What the model gets right—and wrong.</h2><p>Archived class-level results from the CONCH retention classifier. Select a class to inspect its recall and most frequent confusion.</p></div><span class="section-token">RECORDED DATA</span></div>
+      <div class="results-grid">
+        <article class="surface"><div class="surface-heading"><h3>Recall by tissue class</h3><span>Reference-class recall</span></div><div id="class-bars" class="bars"></div><div id="class-detail" class="detail" aria-live="polite"></div></article>
+        <article class="surface"><div class="surface-heading"><h3>Confusion matrix</h3><span>Rows: reference / columns: prediction</span></div><div id="matrix" class="matrix-wrap"></div><p class="matrix-note">Color intensity is normalized within each reference class. Select a cell to examine its row.</p></article>
+      </div>
+    </section>
+    <section class="shell section" id="review" aria-labelledby="review-title">
+      <div class="section-heading"><div><span class="eyebrow">02 / RESEARCHER WORKFLOW</span><h2 id="review-title">Inspect. Record. Export.</h2><p>Try the review flow on nine synthetic illustrations. Your notes exist only in this tab and are never sent to a server.</p></div><span class="section-token alt">LOCAL SESSION ONLY</span></div>
+      <div class="review-grid">
+        <article class="surface collection"><div class="surface-heading"><h3>Example collection</h3><span>All thumbnails are synthetic</span></div>
+          <label class="sr-only" for="filter">Filter by tissue name</label><input id="filter" type="search" placeholder="Find a category…" maxlength="80" autocomplete="off">
+          <div class="sample-list" id="samples"></div><p class="note" id="sample-count" role="status"></p>
+        </article>
+        <article class="surface inspector"><div class="surface-heading"><h3>Review inspector</h3><span>Session-only annotations</span></div>
+          <div class="large-art" id="detail-art"></div>
+          <div class="inspect-title"><div><strong id="chosen-name"></strong><span id="chosen-code"></span></div><span class="synthetic-flag">SYNTHETIC EXAMPLE</span></div>
+          <label for="review-status">Review status</label><select id="review-status"><option>Not reviewed</option><option>Reviewed example</option><option>Needs follow-up</option><option>Uncertain</option></select>
+          <label for="review-text">Example research note</label><textarea id="review-text" maxlength="1000" placeholder="Add a note to demonstrate the annotation workflow…"></textarea>
+          <div class="review-actions"><button class="primary-btn" id="save" type="button">Save in session</button><button class="secondary-btn" id="export" type="button">Export notes JSON</button></div>
+          <p class="note" id="save-status" role="status">Nothing is uploaded or permanently saved.</p>
+        </article>
+      </div>
+    </section>
+    <section class="shell section limitations" id="limitations"><div class="section-heading"><div><span class="eyebrow">03 / SCOPE & PROVENANCE</span><h2>A preview, not the private workspace.</h2></div></div>
+      <div class="limits-grid">
+        <div class="limit-card"><span class="limit-number">01</span><h3>Recorded evidence</h3><p>Evaluation figures reproduce the repository's archived <code>conch-retention-001</code> results on the CRC-VAL-HE-7K benchmark, not a fresh test on independent patients. The model's pretraining overlap is unknown.</p><a href="https://github.com/Roger-Zhou0/tissology/blob/main/studio/static/collection-validation-conch-retention-001.json" target="_blank" rel="noopener noreferrer">Source evaluation record ↗</a></div>
+        <div class="limit-card"><span class="limit-number">02</span><h3>No private data</h3><p>There are no original slide images, model weights, credentials, collection exports, uploads, or private APIs in this preview. The image-like patterns are abstract illustrations only.</p></div>
+        <div class="limit-card"><span class="limit-number">03</span><h3>No compute bill</h3><p>No neural network runs for visitors. Site hosting serves only static HTML, CSS, and JavaScript. The original research server can stay offline or password-protected.</p></div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="shell footer-inner"><span><b>T</b> Tissology · Quantitative pathology research prototype</span><span>Not a clinical diagnostic system · No data collected by this demo</span></div></footer>
+</body>
+</html>
