@@ -1,21 +1,24 @@
-# Tissology public research workspace
+# Tissology public image workspace
 
-A static workspace for the archived `conch-retention-001` evaluation. Hosted with GitHub Pages from `main /docs`. No backend, inference, account, uploads, analytics, or calls to the private research server. Browser-side interaction only.
+A static adaptation of the original Tissology frontend, hosted by GitHub Pages from `main /docs`. The original application's base, presentation, and collection styles are retained in `original/`. Backend application files remain unchanged.
 
-## Explore
+## Working features
 
-- Filter and sort the nine tissue classes by recall, precision, or support.
-- Inspect class prediction distributions and individual confusion-matrix cells.
-- Switch between tile counts and row percentages.
-- Review all nonzero error pairs, ranked by frequency.
-- Write findings linked to a class or confusion pair and export them as JSON.
+- Browse 36 actual public tissue tiles; filter by class, filename, and review status.
+- Inspect and zoom images; navigate with buttons or arrow keys.
+- Confirm, change, or mark reference labels unsure; record notes.
+- Select image evidence and save findings with review snapshots.
+- Export reviews/findings as JSON and standalone HTML reports with embedded images.
+- Rank images by browser-computed color and texture distance.
+- Import PNG, JPEG, and WebP files locally (100 images / 50 MB per selection); no uploads or inference.
+- Persist sample reviews/findings in localStorage, with a tab-only fallback if storage fails. Local imports and findings containing them last only for the current tab.
 
-Findings live in memory in the current tab. Closing or reloading clears them; export first. The app warns before leaving when there is work in memory. No original tissue images or per-image predictions are included, and there are no simulated images or invented predictions.
+There are no model predictions for individual sample tiles, live inference, arbitrary text semantic search, retraining, accounts, or shared storage. Reference labels are explicitly distinguished from predictions. Aggregate benchmark exploration remains at `evaluation.html`.
 
-## Provenance
+## Resources and data
 
-`benchmark.json` is copied from `studio/static/collection-validation-conch-retention-001.json`. The UI's embedded counts reproduce that record. Matrix total: 7,180; correct: 6,905; label agreement: 96.17%; macro F1: 94.62%. Precision, recall, and F1 are computed from the embedded matrix. This is reused benchmark evidence, not fresh patient-level validation or a clinical tool.
+Static files and 36 PNG images (~3.5 MB combined) are served by GitHub Pages. Images load lazily. All computation and storage happen in the visitor's browser. `connect-src 'none'` blocks backend requests. There are no external image/font assets, telemetry, paid APIs, or connections to the research server. Source attribution and modifications: [ATTRIBUTION.md](ATTRIBUTION.md). Machine-readable manifest: `samples.json`.
 
-## Run
+## Preview
 
-Open `index.html` directly, or serve this directory with any static server. There is no build or dependency installation. Content Security Policy blocks connections via `connect-src 'none'`. All assets are local.
+Serve this directory with a static HTTP server, e.g. `python3 -m http.server 8765 --directory docs`, then open localhost:8765. Serving over HTTP avoids browser file-origin restrictions on canvas-based similarity and report export. No package installation or build step is needed.
